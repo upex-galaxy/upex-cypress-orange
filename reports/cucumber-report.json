@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "🟢📜orangehrm-|-account-|-recuperar-contraseña-olvidada-por-usuario;us-gx2-41-|-tc1:-validar-recuperar-contraseña-correctamente.;;2",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "US-GX2-41 | TC1: Validar recuperar contraseña correctamente.",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "line": 12,
+            "name": "el usuario tiene una cuenta creada previamente",
+            "result": {
+              "duration": 3391000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "And ",
+            "line": 13,
+            "name": "el usuario ingresa en la sección de recuperación de contraseña",
+            "result": {
+              "duration": 3539000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "When ",
+            "line": 14,
+            "name": "el usuario ingresa su \"Admin\" en el input de username",
+            "result": {
+              "duration": 639000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "And ",
+            "line": 15,
+            "name": "hace click en \"[type='submit']\"",
+            "result": {
+              "duration": 1481000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 16,
+            "name": "deberia aparecer un mensaje como \"Reset Password link sent successfully\"",
+            "result": {
+              "duration": 889000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "And ",
+            "line": 17,
+            "name": "deberia visualizar el siguiente \"A reset password link has been sent to you via email.\" y \"You can follow that link and select a new password\"",
+            "result": {
+              "duration": 109000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          }
+        ],
+        "type": "scenario",
+        "tags": [
+          {
+            "line": 1,
+            "name": "@GX2-76"
+          },
+          {
+            "line": 1,
+            "name": "@Automation"
+          },
+          {
+            "line": 1,
+            "name": "@TestExecutionReport"
+          },
+          {
+            "line": 2,
+            "name": "@US_GX2-40"
+          },
+          {
+            "line": 10,
+            "name": "@TC_GX2-73"
+          },
+          {
+            "line": 10,
+            "name": "@TS_GX2-41"
+          },
+          {
+            "line": 10,
+            "name": "@QA"
+          },
+          {
+            "line": 10,
+            "name": "@TC"
+          }
+        ]
+      }
+    ],
+    "id": "🟢📜orangehrm-|-account-|-recuperar-contraseña-olvidada-por-usuario",
+    "keyword": "Feature",
+    "line": 3,
+    "name": "🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usuario",
+    "uri": "cypress\\e2e\\cucumber-test\\Suites\\GX2-40\\AccountRecoveryPassword.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@GX2-76"
+      },
+      {
+        "line": 1,
+        "name": "@Automation"
+      },
+      {
+        "line": 1,
+        "name": "@TestExecutionReport"
+      },
+      {
+        "line": 2,
+        "name": "@US_GX2-40"
+      }
+    ]
+  }
+]

@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="15.6060" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2022-09-04T00:15:26" tests="0" file="cypress\e2e\cucumber-test\Suites\GX2-40\AccountRecoveryPassword.feature" time="0.0000" failures="0">
-  </testsuite>
-  <testsuite name="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usuario" timestamp="2022-09-04T00:15:26" tests="1" time="15.4520" failures="0">
-    <testcase name="US-GX2-41 | TC1: Validar recuperar contraseña correctamente. (example #1)" time="10.3380" classname="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usuario US-GX2-41 | TC1: Validar recuperar contraseña correctamente. (example #1)">
-    </testcase>
-  </testsuite>
-</testsuites>
+

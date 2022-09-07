@@ -26,7 +26,7 @@ describe("US-GX2-41 | TC1: Validar recuperar contraseña correctamente.", () => 
 }) 
 
 
-/*
+
  describe("US-GX2-41 | TC2: Validar No poder recuperar contraseña cuando el campo username está vacío.", () => {
     Given("el usuario tiene una cuenta creada previamente.", () => {
             cy.visit("https://opensource-demo.orangehrmlive.com/")
@@ -42,16 +42,17 @@ describe("US-GX2-41 | TC1: Validar recuperar contraseña correctamente.", () => 
     And("hace click en {string}.", (ResetPassword) => {
         cy.get(ResetPassword).click()
     })
-    Then("debería aparecer un mensaje de error como {string} debajo del input", (requiresMsj) => {
-        cy.contains(requiresMsj).should('be.visible')
+    Then("debería aparecer un mensaje de error como {string} debajo del input", (requiredMsj) => {
+        cy.contains(requiredMsj).should('be.visible')
     })
     And("no debería poder enviarse la solicitud de cambio de contraseña", () => {
         cy.url().should("include","requestPasswordResetCode")
     })
 })
 
+
 describe("US-GX2-41 | TC3: Validar No poder recuperar contraseña cuando se ingresa usuario no válido.", () => {
-    Given("el usuario debe una cuenta creada previamente", () => {
+    Given("el usuario debe tener una cuenta creada previamente", () => {
             cy.visit("https://opensource-demo.orangehrmlive.com/")
             cy.url().should("contain","login")
     })
@@ -59,20 +60,17 @@ describe("US-GX2-41 | TC3: Validar No poder recuperar contraseña cuando se ingr
             cy.contains("Forgot your password?").click()
             cy.url().should("contain","requestPasswordResetCode")
     })
-    When("el usuario debe ingresar su {string} en {string}.", (userinvalid, userInput) => {
+    When("el usuario ingresa un {string} en {string}", (userinvalid, userInput) => {
         cy.get(userInput).type(userinvalid)
     })
     And("hace click en el botón {string}", (ResetPassword) => {
         cy.get(ResetPassword).click()
     })
-    Then("deberia aparecer un mensaje de error como {string} debajo del input username", (requiresMsj) => {
-        cy.contains(requiresMsj).should('be.visible')
-    })
-    And("no deberia poder enviarse la solicitud de contraseña", () => {
+    Then("debería aparecer un mensaje de error no permitiendo enviar la solicitud de cambio de contraseña", () => {
         cy.url().should("include","requestPasswordResetCode")
     })
 })
-*/
+
 
 //________________________________________________________________________
 // Comando predeterminado para que no ocurran errores de excepciones:

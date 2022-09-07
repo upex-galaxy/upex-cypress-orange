@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="11.8970" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2022-09-06T02:49:57" tests="0" file="cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature" time="0.0000" failures="0">
+<testsuites name="Mocha Tests" time="38.7590" tests="5" failures="3">
+  <testsuite name="Root Suite" timestamp="2022-09-07T04:10:47" tests="0" file="cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature" time="0.0000" failures="0">
   </testsuite>
-  <testsuite name="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio" timestamp="2022-09-06T02:49:57" tests="1" time="11.8660" failures="0">
-    <testcase name="US-GX2-80 | TC1: Validar recuperar contraseña correctamente (example #1)" time="8.2680" classname="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio US-GX2-80 | TC1: Validar recuperar contraseña correctamente (example #1)">
+  <testsuite name="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio" timestamp="2022-09-07T04:10:47" tests="5" time="38.7270" failures="3">
+    <testcase name="US-GX2-80 | TC1: Validar recuperar contraseña correctamente (example #1)" time="8.6810" classname="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio US-GX2-80 | TC1: Validar recuperar contraseña correctamente (example #1)">
+    </testcase>
+    <testcase name="US-GX2-80 | TC2: Validar No poder recuperar contraseña cuando el campo username está vacío (example #1)" time="3.9550" classname="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio US-GX2-80 | TC2: Validar No poder recuperar contraseña cuando el campo username está vacío (example #1)">
+    </testcase>
+    <testcase name="US-GX2-80 | TC3: Validar No poder recuperar contraseña cuando se ingresa usuario no válido (example #1)" time="0.0000" classname="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio US-GX2-80 | TC3: Validar No poder recuperar contraseña cuando se ingresa usuario no válido (example #1)">
+      <failure message="Timed out retrying after 4000ms: expected &apos;https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset&apos; to include &apos;requestPasswordResetCode&apos;" type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: expected 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset' to include 'requestPasswordResetCode'
+    at Context.eval (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:9679:20)
+    at Registry.runStepDefininition (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:8328:48)
+    at Context.eval (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:9111:48)]]></failure>
+    </testcase>
+    <testcase name="US-GX2-80 | TC3: Validar No poder recuperar contraseña cuando se ingresa usuario no válido (example #2)" time="0.0000" classname="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio US-GX2-80 | TC3: Validar No poder recuperar contraseña cuando se ingresa usuario no válido (example #2)">
+      <failure message="Timed out retrying after 4000ms: expected &apos;https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset&apos; to include &apos;requestPasswordResetCode&apos;" type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: expected 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset' to include 'requestPasswordResetCode'
+    at Context.eval (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:9679:20)
+    at Registry.runStepDefininition (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:8328:48)
+    at Context.eval (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:9111:48)]]></failure>
+    </testcase>
+    <testcase name="US-GX2-80 | TC3: Validar No poder recuperar contraseña cuando se ingresa usuario no válido (example #3)" time="0.0000" classname="🟢📜OrangeHRM | Account | Recuperar contraseña olvidada por usurio US-GX2-80 | TC3: Validar No poder recuperar contraseña cuando se ingresa usuario no válido (example #3)">
+      <failure message="Timed out retrying after 4000ms: expected &apos;https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset&apos; to include &apos;requestPasswordResetCode&apos;" type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: expected 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset' to include 'requestPasswordResetCode'
+    at Context.eval (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:9679:20)
+    at Registry.runStepDefininition (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:8328:48)
+    at Context.eval (https://opensource-demo.orangehrmlive.com/__cypress/tests?p=cypress\e2e\cucumber-test\Suites\GX2-80-OrangeHRM-Account\Account.RecoveryPassword.feature:9111:48)]]></failure>
     </testcase>
   </testsuite>
 </testsuites>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="Mocha Tests" time="69.4440" tests="6" failures="3">
   <testsuite name="Root Suite" timestamp="2022-09-07T15:06:10" tests="0" file="cypress\e2e\cucumber-test\Suites\GX-33\account.RecoveryPassword.feature" time="0.0000" failures="0">
@@ -29,3 +30,6 @@
     </testcase>
   </testsuite>
 </testsuites>
+=======
+
+>>>>>>> origin/cypex

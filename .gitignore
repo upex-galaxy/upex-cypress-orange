@@ -4,8 +4,4 @@ cypress/screenshots
 reports/test-results.xml
 reports/cucumber-report.json
 reports/cucumber-messages.ndjson
-<<<<<<< HEAD
 .vscode/settings.json
-=======
-.vscode/settings.json
->>>>>>> origin/cypex

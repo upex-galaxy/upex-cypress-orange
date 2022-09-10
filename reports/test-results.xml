@@ -1,1 +1,13 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="3.5140" tests="3" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-09-10T02:51:06" tests="0" file="cypress\e2e\test\Suites\sintaxis.cy.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="US # : aquí se escribe el título de la User Story" timestamp="2022-09-10T02:51:06" tests="3" time="3.4960" failures="0">
+    <testcase name="US # | TC#1: Aquí puedes escribir un Caso de Prueba" time="1.2470" classname="US # : aquí se escribe el título de la User Story US # | TC#1: Aquí puedes escribir un Caso de Prueba">
+    </testcase>
+    <testcase name="US # | TC#2: Aquí puedes escribir otro Caso de Prueba" time="0.1100" classname="US # : aquí se escribe el título de la User Story US # | TC#2: Aquí puedes escribir otro Caso de Prueba">
+    </testcase>
+    <testcase name="US # | TC#3: Aquí puedes escribir otro Caso de Prueba" time="0.0200" classname="US # : aquí se escribe el título de la User Story US # | TC#3: Aquí puedes escribir otro Caso de Prueba">
+    </testcase>
+  </testsuite>
+</testsuites>

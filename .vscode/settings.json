@@ -80,6 +80,9 @@
 		"*.json": "Cypress",
 		".cypress-cucumber-preprocessorrc.json": "cucumber",
 		"cucumber-report.json": "cucumber",
+		"cucumber-messages.ndjson": "cucumber",
+		"cucumber-html-report.js": "cucumber",
+		"cucumber-json-formatter.exe": "cucumber",
 		"jsconfig.json": "Javascript-map",
 		"settings.json": "Vscode"
 	},
@@ -104,6 +107,7 @@
 		"regression": "rules",
 		"in-sprint": "rules",
 		"cucumber-test": "Resolver",
+		"cucumber-report.html": "Resolver",
 		"fixtures": "container",
 		"support": "Helper",
 		"xhr-fetch": "batch",

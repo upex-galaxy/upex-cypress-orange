@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "cypress open",
-		"file": "cypress run --reporter mochawesome --browser chrome --spec"
+		"file": "cypress run --record --key 80910c55-a626-44cd-9a86-de32fc2c3246 --reporter mochawesome --browser chrome --spec"
 	},
 	"keywords": [
 		"cypress",
@@ -31,6 +31,7 @@
 		"mocha-junit-reporter": "2.0.2",
 		"mochawesome": "7.1.3",
 		"mochawesome-merge": "4.2.1",
-		"mochawesome-report-generator": "6.2.0"
+		"mochawesome-report-generator": "6.2.0",
+		"multiple-cucumber-html-reporter": "3.0.1"
 	}
 }

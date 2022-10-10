@@ -1,4 +1,4 @@
-[![L2-cypex-orange](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/31yjoc&style=for-the-badge&logo=cypress)](https://dashboard.cypress.io/projects/31yjoc/runs)
+[![CYPEX L2 ORANGE-HRM](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/31yjoc&style=for-the-badge&logo=cypress)](https://dashboard.cypress.io/projects/31yjoc/runs)
 
 # Testing Automation - Cypress 10.9.0 + Cucumber
 ![UPEX's Banners (linkedin) (1)](https://user-images.githubusercontent.com/91127281/189470339-acea5782-16f1-4f06-9ce0-df54fd3ead9d.png)
@@ -13,7 +13,7 @@ Cypress es un Framework de Automatización de Next Generation construido para we
 2. Instala todas las dependencias: `npm i` (i de install) o puedes usar `npm i -f` (-f de force) por si estás teniendo conflictos al instalar.
 3. Corre el comando: `npx cypress open` o `npm test` (ya que en Package.json tenemos la variable "test" como el "cypress open") para abrir Cypress!
 4. Para correr pruebas en la terminal, corre: 
-`npm run file */**/<filename>` (la variable "file" es "cypress run --reporter mochawesome --browser chrome --spec" lo cual es un atajo para que podamos correr las pruebas de un directorio que especifiquemos, usando el navegador de Chrome, y generando un excelente reporte html), esto nos ayudará a generar los archivos de Reportes XML para importarlos a Jira!
+`npm run file */**/<filename>` (la variable "file" es "cypress run --record --key {CypressDashboardKey} --reporter mochawesome --browser chrome --spec" lo cual es un atajo para que podamos correr las pruebas de un directorio que especifiquemos, usando el navegador de Chrome, y generando un excelente reporte html), esto nos ayudará a generar los archivos de Reportes XML para importarlos a Jira! y ahora con GX LEVEL 2 vamos a poder visualizar todas los Test Runs en el Dashboard de Cypress!
 
 # Las Guías de UPEX para saber cómo trabajar en un Workspace Real están Confluence: [CYPRESS AL GRANO](https://upexgalaxy1.atlassian.net/wiki/spaces/UG/pages/852822)
 

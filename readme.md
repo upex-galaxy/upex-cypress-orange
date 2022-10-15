@@ -9,11 +9,12 @@ Aunque no es el único E2E en el mercado, y tampoco es el más usado como sí lo
 Cypress es un Framework de Automatización de Next Generation construido para web modernas. Esto es im simple proyecto el cual puedes usarlo para comenzar tu viaje por la Galaxia de la Automatización!
 
 # CÓMO EMPEZAR:
-1. Clona el Proyecto: `git clone <URLdelRepositorioGitHub>`
-2. Instala todas las dependencias: `npm i` (i de install) o puedes usar `npm i -f` (-f de force) por si estás teniendo conflictos al instalar.
-3. Corre el comando: `npx cypress open` o `npm test` (ya que en Package.json tenemos la variable "test" como el "cypress open") para abrir Cypress!
-4. Para correr pruebas en la terminal, corre: 
-`npm run file */**/<filename>` (la variable "file" es "cypress run --record --key {CypressDashboardKey} --reporter mochawesome --browser chrome --spec" lo cual es un atajo para que podamos correr las pruebas de un directorio que especifiquemos, usando el navegador de Chrome, y generando un excelente reporte html), esto nos ayudará a generar los archivos de Reportes XML para importarlos a Jira! y ahora con GX LEVEL 2 vamos a poder visualizar todas los Test Runs en el Dashboard de Cypress!
+1. **Clona el Proyecto**: `git clone <URLdelRepositorioGitHub>`
+2. **Instala todas las dependencias**: `npm i` (i de install) o puedes usar `npm i -f` (-f de force) por si estás teniendo conflictos al instalar.
+3. **Corre el comando**: `npx cypress open` o `npm test` (ya que en Package.json tenemos la variable "test" como el "cypress open") para abrir Cypress!
+4. **Para correr pruebas en la terminal, ejecuta**: `npm run file */**/<filename>`, donde la variable "file" es "*cypress run --browser chrome --record --key {key} --spec*", cuyo atajo es para que podamos correr las pruebas de un directorio que especifiquemos, usando el navegador de Chrome, generando 1 Reporte JSON Cucumber para importar a Jira, y adicionalmente actualizar el Cypress Dashboard del Proyecto.
+AHORA CON **CYPRESS DASHBOARD**, puedes ver todas las ejecuciones y resultados de prueba del proyecto! Visita: [CYPRESS DASHBOARD](https://dashboard.cypress.io/projects/31yjoc/analytics/runs-over-time)
+5. **Ejecuta**: `npm run report`, cuyo script es igual a "*node ./cucumber-html-report.js*" para generar el archivo index.html de CUCUMBER, con el fin de abrirlo en el navegador y visualizar todas las ejecuciones con una vista hermosa!
 
 # Las Guías de UPEX para saber cómo trabajar en un Workspace Real están Confluence: [CYPRESS AL GRANO](https://upexgalaxy1.atlassian.net/wiki/spaces/UG/pages/852822)
 

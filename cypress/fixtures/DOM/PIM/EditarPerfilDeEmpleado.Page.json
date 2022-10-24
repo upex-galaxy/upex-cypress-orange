@@ -1,0 +1,35 @@
+{
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    "urlPIM":"https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+    "input":
+    {
+        "username": "[name='username']",
+        "password": "[name='password']",
+        "buttonLogin": "[type='submit']",
+        "firstName":"[name='firstName']",
+        "middleName":"[name='middleName']",
+        "lastName":"[name='lastName']",
+        "Nickname":".oxd-form input>3",
+        "EmployeeID":".oxd-form input>4",
+        "Nationality":".oxd-select-text.oxd-select-text--active>0",
+        "DateOfBirth":"[placeholder='yyyy-mm-dd']>1",
+        "Gender":".oxd-input-group>14",
+        "buttonSave":"[type='submit']>0"
+
+    },
+    "data":
+    {
+        "username": "Admin",
+        "password": "admin123",
+        "firstName":"D",
+        "middleName":"Del",
+        "lastName":"C",
+        "Nickname":"Milin",
+        "EmployeeID":"1234567890",
+        "Nationality":"Venezuelan",
+        "DateOfBirth":"1980-06-10",
+        "Gender":"[type='radio']>1",
+        "Log Message":"Success, Succesfully Saved"
+    }
+
+}

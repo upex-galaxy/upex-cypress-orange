@@ -42,7 +42,7 @@
 	"editor.formatOnType": false,
 	"editor.formatOnPaste": false,
 	"editor.formatOnSave": false,
-	"editor.wordWrap": "on",
+	"editor.wordWrap": "off",
 	"editor.accessibilitySupport": "off",
 	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
 	"python.formatting.provider": "autopep8",

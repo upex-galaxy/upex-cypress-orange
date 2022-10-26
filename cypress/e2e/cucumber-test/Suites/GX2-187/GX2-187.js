@@ -7,12 +7,21 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
         cy.LoginOrange()
 
     })
+
     And("abre el VPD del empleado para editar",() =>
     {
-        cy.get(".oxd-icon.bi-pencil-fill").click({ force: true })
-        .should("contain", "Personal Details")
 
+        cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page.json").then((the) =>
+        {
+            cy.visit(the.urlPIM)// visita la url
+            cy.url().should("contain", "viewEmployeeList")
+
+            cy.scrollTo(0, 500)
+            cy.get(the.selector).click({force:true})
+            
+        })
     })
+    
     When("el admin inserta nuevos valores validos en los campos del form como {string},{string},{string},{string}", (firstName,MiddleName,lastName,NickName,EmployeeID,Nationality,DateofBirth,Gender) =>
     {
         cy.get(the.input.firstName)
@@ -63,3 +72,20 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
         expect(1).to.eq(1)
     })
 })
+
+
+
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+	// returning false here prevents Cypress from
+	// failing the test
+	return false
+})
+// Comando predeterminado para que no aparezcan los Fetch en el log del Test Runner:
+const origLog = Cypress.log
+Cypress.log = function (opts, ...other) {
+	if (opts.displayName === 'xhr'|| opts.displayName === 'fetch' && opts.url.startsWith('https://')) {
+		return
+	}
+	return origLog(opts, ...other)
+}

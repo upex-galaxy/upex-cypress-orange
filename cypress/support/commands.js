@@ -7,7 +7,7 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-import cypress from 'cypress';
+
 import 'cypress-file-upload';
 require('@4tw/cypress-drag-drop')
 

@@ -1,6 +1,8 @@
 {
     "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
     "urlPIM":"https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+    "selector":":nth-child(5) > .oxd-table-row > :nth-child(3) > div",
+    "button":"[type='button']",
     "input":
     {
         "username": "[name='username']",

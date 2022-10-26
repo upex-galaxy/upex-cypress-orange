@@ -53,7 +53,6 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
 
         cy.get(the.input.Gender)
             .type(Gender)
-
     })
     And("hace click en el botón {string}", (Save)=>
     {
@@ -72,7 +71,6 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
         expect(1).to.eq(1)
     })
 })
-
 
 
 

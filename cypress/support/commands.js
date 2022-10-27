@@ -9,6 +9,7 @@
 // ***********************************************
 import 'cypress-file-upload';
 require('@4tw/cypress-drag-drop')
+import 'cypress-wait-until';
 
 
 

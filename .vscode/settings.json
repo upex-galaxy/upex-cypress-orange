@@ -39,6 +39,8 @@
 	"[feature]": {
 		"editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
 	},
+	"editor.fontFamily": "'Cascadia Code'",
+	"editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
 	"editor.formatOnType": false,
 	"editor.formatOnPaste": false,
 	"editor.formatOnSave": false,

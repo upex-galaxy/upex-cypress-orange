@@ -1,13 +1,8 @@
 @GX-5 @AutomationTriggered @Cucumber @Cypress @GitHubActions @Labs @Xray
 @US_GX-2
-Feature: Labs: CI Framework Test for Xray with Cypress and GitHub Actions
-	#As a Workspace Manager,
-	#
-	#I want to test Cypress-GitHub TX Result Integration; by clicking on a Jira Action, the CI tool can be triggered and run all of the associated test to this feature and update the test status back to Jira again.
-	#
-	#So that the Tests can be updated from Jira Action.
+Feature: Account Login
 
-	Background: Precondiciones para estar registrado
+	Background: Precondiciones para iniciar sesión
 		Given User is signed up
 		And User is at the login page
 
@@ -26,7 +21,6 @@ Feature: Labs: CI Framework Test for Xray with Cypress and GitHub Actions
 		Then User should NOT be able to login to the Website
 		And should display an error message as "Please, insert a valid value"
 		Examples:
-			| username | password |
-			| Admin2    | admin1234 |
-	
+			| username | password  |
+			| Admin2   | admin1234 |
 

@@ -10,52 +10,72 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
 
     And("abre el VPD del empleado para editar",() =>
     {
-
-        cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page.json").then((the) =>
+        cy.get(".bi-pencil-fill").then((editBtn)=>
         {
-            cy.visit(the.urlPIM)// visita la url
-            cy.url().should("contain", "viewEmployeeList")
-
-            cy.scrollTo(0, 500)
-            cy.get(the.selector).click({force:true})
-            
+            cy.log(editBtn.length)
+            const randomEdit = Math.floor(Math.random() * editBtn.length)
+            cy.log(randomEdit)
+            if(randomEdit % 2 != 0)
+            {
+                cy.wrap(editBtn).eq(randomEdit)
+                .click({force:true})
+            }
+                
         })
     })
     
-    When("el admin inserta nuevos valores validos en los campos del form como {string},{string},{string},{string}", (firstName,MiddleName,lastName,NickName,EmployeeID,Nationality,DateofBirth,Gender) =>
+    When("el admin inserta nuevos valores validos en los campos del form como {string},{string},{string},{string},{string},{string},{string},{string}", (firstName,MiddleName,lastName,NickName,EmployeeID,Nationality,DateOfBirth,Gender) =>
     {
-        cy.get(the.input.firstName)
+        
+        cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page").then((the) =>
+        {
+            cy.get("[name='firstName']")
+            .clear()
             .type(firstName)
-            .should("contain.text", "firstName")
-            .and("be.visible")
+            .should("not.contain.text", "error")
+            
 
-        cy.get(the.input.middleName)
+            cy.get("[name='middleName']")
+            .clear()
             .type(MiddleName)
-            .should("contain.text", "firstName")
-            .and("be.visible")
+            .should("not.contain.text", "error")
+            
 
-        cy.get(the.input.lastName)
+            cy.get(the.input.lastName)
+            .clear()
             .type(lastName)
-            .should("contain.text", "firstName")
-            .and("be.visible")
+            .should("not.contain.text", "error")
+            
 
-        cy.get(the.input.NickName).eq(3)
+            cy.get(".oxd-grid-3 input").eq(0)
+            .clear()
             .type(NickName)
+            
 
-        cy.get(the.input.EmployeeID).eq(4)
+            cy.get(the.input.EmployeeID).eq(4)
+            .clear()
             .type(EmployeeID)
+            .should("not.contain.text", "error")
 
-        cy.get(the.input.Nationality)
-            .type(Nationality)
+            cy.get('.oxd-select-text-input').eq(0)
+            .select("American")
+            .should("have.value","American")
 
-        cy.get(the.input.DateOfBirth)
-            .type(DateofBirth)
+            
 
-        cy.get(the.input.Gender)
+            cy.get(':nth-child(5) > :nth-child(2) > :nth-child(1)')
+            .click({force:true})
+            .type(DateOfBirth)
+            
+
+            cy.get(the.input.Gender).eq(14)
             .type(Gender)
+            .should('have.value', 'Female')
+        })
     })
     And("hace click en el botón {string}", (Save)=>
     {
+
         expect(1).to.eq(1)
     })
     Then("debe aparecer un Log Message indicando {string}", (Message) =>

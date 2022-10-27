@@ -31,7 +31,7 @@ require('@4tw/cypress-drag-drop')
 
 Cypress.Commands.add("LoginOrange", () =>
 {
-    cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page.json").then((the) =>
+    cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page").then((the) =>
     {
         cy.visit(the.url)// visita la url
         cy.url().should("contain", "orangehrm")

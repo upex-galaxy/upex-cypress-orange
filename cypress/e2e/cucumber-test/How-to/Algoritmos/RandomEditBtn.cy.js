@@ -21,8 +21,10 @@ describe('take element', () => {
 
         cy.get(".oxd-grid-3 input").eq(0)
             .type("Saitest")
+
+        cy.get(".oxd-select-text--arrow").eq(0).click({force:true})
+        cy.get("[role='option']").eq(1).click()
     })
-    
 })
 
 

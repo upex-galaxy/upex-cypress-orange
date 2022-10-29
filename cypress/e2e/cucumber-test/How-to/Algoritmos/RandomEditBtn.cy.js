@@ -22,8 +22,13 @@ describe('take element', () => {
         cy.get(".oxd-grid-3 input").eq(0)
             .type("Saitest")
 
-        cy.get(".oxd-select-text--arrow").eq(0).click({force:true})
-        cy.get("[role='option']").eq(1).click()
+        cy.get(".oxd-select-text--arrow").eq(0) // Nacionalidad
+            .click({force:true})
+
+        const randomNum = Math.floor(Math.random() * 194)
+        cy.get("[role='option']").eq(randomNum) // Option de Nacionalidad
+            .click()
+        
     })
 })
 

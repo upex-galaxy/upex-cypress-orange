@@ -4,8 +4,7 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
 {
     Given("el administrador está registrado en el sistema exitosamente", () =>
     {
-        cy.LoginOrange()
-
+        cy.Login()
     })
 
     And("abre el VPD del empleado para editar",() =>

@@ -1,13 +1,9 @@
 {
-    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
     "urlPIM":"https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
     "selector":".bi-pencil-fill",
     "button":"[type='button']",
     "input":
     {
-        "username": "[name='username']",
-        "password": "[name='password']",
-        "buttonLogin": "[type='submit']",
         "firstName":"[name='firstName']",
         "middleName":"[name='middleName']",
         "lastName":"[name='lastName']",

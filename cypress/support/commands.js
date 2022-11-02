@@ -31,20 +31,19 @@ import 'cypress-wait-until';
 
 
 
-Cypress.Commands.add("LoginOrange", () =>
+Cypress.Commands.add("Login", () =>
 {
-    cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page").then((the) =>
-    {
-        cy.visit(the.url)// visita la url
+    cy.session("login",()=>{
+        cy.visit("/")// visita la url
         cy.url().should("contain", "orangehrm")
 
-        cy.get(the.input.username).type(the.data.username)//Obtener input Username y escribir el usuario
-        .should("have.value",the.data.username) // Debería contener el el valor de usuario
+        cy.get("[name='username']").type("Admin")//Obtener input Username y escribir el usuario
+        .should("have.value","Admin") // Debería contener el el valor de usuario
 
-        cy.get(the.input.password).type(the.data.password) //Obtener input Password y escribir el contraseña
-        .should("have.value", the.data.password) // Debería contener el el valor de la contraseña
+        cy.get("[name='password']").type("admin123") //Obtener input Password y escribir el contraseña
+        .should("have.value", "admin123") // Debería contener el el valor de la contraseña
 
-        cy.get(the.input.buttonLogin).click() // Contiene Login, hacer click
+        cy.get("[type='submit']").click() // Contiene Login, hacer click
     })
 })
 

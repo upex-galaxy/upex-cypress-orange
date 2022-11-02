@@ -7,6 +7,7 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
+
 import 'cypress-file-upload';
 require('@4tw/cypress-drag-drop')
 import 'cypress-wait-until';
@@ -32,7 +33,7 @@ import 'cypress-wait-until';
 
 Cypress.Commands.add("LoginOrange", () =>
 {
-    cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page.json").then((the) =>
+    cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page").then((the) =>
     {
         cy.visit(the.url)// visita la url
         cy.url().should("contain", "orangehrm")
@@ -44,6 +45,18 @@ Cypress.Commands.add("LoginOrange", () =>
         .should("have.value", the.data.password) // Debería contener el el valor de la contraseña
 
         cy.get(the.input.buttonLogin).click() // Contiene Login, hacer click
+    })
+})
+
+Cypress.Commands.add("dropDown", (index,type) =>
+{
+    cy.contains("div", type).siblings().within(() =>
+    {
+        cy.get(".oxd-select-text").click({force:true})
+
+    }).then(() =>
+    {
+        cy.get("[role='listbox']").children().eq(index).click()
     })
 })
 

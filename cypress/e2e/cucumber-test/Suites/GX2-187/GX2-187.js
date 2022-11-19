@@ -9,23 +9,19 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
 
     And("abre el VPD del empleado para editar",() =>
     {
+        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
         cy.get(".oxd-table-row").its('length').then(LengthButton =>
         {
             const randomEdit = Math.floor(Math.random() * LengthButton) + 1
             cy.get(".oxd-table-row").eq(randomEdit).within(() =>
             {
                 cy.get(".bi-pencil-fill").click({force:true})
-
             })
-            
         })
-        
-
     })
 
     When("el admin inserta nuevos valores validos en los campos del form como {string},{string},{string},{string},{string},{string},{string},{string}", (firstName,MiddleName,lastName,NickName,EmployeeID,Nationality,DateOfBirth,Gender) =>
     {
-
         cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page").then((the) =>
         {
             cy.get("[name='firstName']")

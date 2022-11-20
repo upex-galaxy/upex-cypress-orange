@@ -6,25 +6,21 @@ context('Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario', (
     })
     
     And('se le autoasigne un perfil de administrador por defecto', () => {
-        cy.get("[name='username']").type('Admin')
-        cy.get("[name='password']").type('admin123')
-        cy.get('button[type=submit]').click()
+        cy.Login()
     })
     
-    And('el administrador se encuentra en Módulo PIM', () => {
-        cy.get('a[href="/web/index.php/pim/viewPimModule"]').click()
+    And('el administrador se ubica en la sección {string}', (section) => {
+        cy.visit('/web/index.php/pim/addEmployee')
+        cy.get("a").contains(section)
     })
     
     describe('252 | TC1: Validar que administrador pueda incorporar un nuevo empleado con usuario al sistema de gestión', () => {
-        Given('el administrador se ubica en la sección "Add Employee"', () => {
-            cy.contains('a', /^Add Employee/).click()
-        })
-    
-        And('activa la opción de "Create Login Details"', () => {
+        When('activa la opción de {string}', (toggle) => {
             cy.get('input[type=checkbox]').click({force: true})
+            cy.contains(toggle).should("be.visible")
         })
     
-        When('rellena todos los datos requeridos (incluyendo credenciales) como {string}', (firstName) => {
+        And('rellena todos los datos requeridos incluyendo credenciales como {string}', (firstName) => {
             cy.get("[name='firstName']").type(firstName)
     
             // cy.get("[name='middleName']")

@@ -12,16 +12,15 @@ Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario
 		#@PREC_GX2-413
 		Given el administrador esté registrado en el sistema exitosamente
 		And se le autoasigne un perfil de administrador por defecto
-		And el administrador se encuentra en Módulo PIM
+		And el administrador se ubica en la sección "Add Employee"
 
 	#@TC_GX2-259 @TS_GX2-252
 	Scenario Outline: 252 | TC1: Validar que administrador pueda incorporar un nuevo empleado con usuario al sistema de gestión
-		Given el administrador se ubica en la sección "Add Employee"
-		And activa la opción de "Create Login Details"
-		When rellena todos los datos requeridos (incluyendo credenciales) como "<firstName>"
+		When activa la opción de "Create Login Details"
+		And rellena todos los datos requeridos incluyendo credenciales como "<firstName>"
 		Examples:
-			| firstName | 
-			| Manuela   | 
+			| firstName |
+			| Manuela   |
 
 
 # # cypress/e2e/duckduckgo.feature
@@ -30,5 +29,5 @@ Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario
 # 		When I visit duckduckgo.com
 # 		Then I should see a search bar "<name>"
 # 		Examples:
-# 			| name      | 
-# 			| Manuela   | 
+# 			| name      |
+# 			| Manuela   |

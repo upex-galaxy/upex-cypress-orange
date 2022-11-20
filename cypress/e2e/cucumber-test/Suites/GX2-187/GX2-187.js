@@ -7,7 +7,7 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
         cy.Login()
     })
 
-    And("abre el VPD del empleado para editar",() =>
+    When("abre el VPD del empleado para editar",() =>
     {
         cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
         cy.get(".oxd-table-row").its('length').then(LengthButton =>
@@ -18,9 +18,10 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
                 cy.get(".bi-pencil-fill").click({force:true})
             })
         })
+        cy.wait(3000)
     })
 
-    When("el admin inserta nuevos valores validos en los campos del form como {string},{string},{string},{string},{string},{string},{string},{string}", (firstName,MiddleName,lastName,NickName,EmployeeID,Nationality,DateOfBirth,Gender) =>
+    And("el admin inserta nuevos valores validos en los campos del form como {string},{string},{string},{string},{string},{string},{string},{string}", (firstName,MiddleName,lastName,NickName,EmployeeID,Nationality,DateOfBirth,Gender) =>
     {
         cy.fixture("DOM/PIM/EditarPerfilDeEmpleado.Page").then((the) =>
         {
@@ -52,29 +53,25 @@ describe("US GX2-187 | TS: ✅OrangeHRM | PIM | Editar perfil de empleado", () =
             .type(EmployeeID)
             .should("not.contain.text", "error")
 
-
             cy.dropDown(parseInt(Nationality), "Nationality")
 
+            // cy.get(':nth-child(5) > :nth-child(2) > :nth-child(1)')
+            // .click({force:true})
+            // .type(DateOfBirth)
+            // cy.log("after")
 
-            cy.get(':nth-child(5) > :nth-child(2) > :nth-child(1)')
-            .click({force:true})
-            .type(DateOfBirth)
-
-
-            cy.get("..oxd-input-group")
-            .click(Female)
-            .should('have.value', 'Female')
+            cy.get("[class*='gender-grouped-field'] [type='radio']").eq(Gender)
+                .click({force:true})
         })
     })
     And("hace click en el botón {string}", (Save)=>
     {
-
-        expect(1).to.eq(1)
+        cy.get('[type="submit"]').contains(Save).eq(0).click()   
+        cy.wait(2000)    
     })
-    Then("debe aparecer un Log Message indicando {string}", (Message) =>
+    Then("debe aparecer un log message como {string}", (Message) =>
     {
-        expect(1).to.eq(1)
-        // cy.contains(Message).should("be.visible")
+        cy.get("#oxd-toaster_1").children().should("be.visible").and("have.text",Message)
     })
     And("se mantiene en la página del perfil del empleado", ()=>
     {

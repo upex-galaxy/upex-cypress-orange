@@ -13,7 +13,7 @@ on: [push]
 
 jobs:
     Build-Cypress-TestSuite-AfterPush:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
 
         steps:
             - name: 💻Checkout
@@ -24,7 +24,7 @@ jobs:
               with:
                   browser: chrome
                   command: |
-                    npm run file */**/GX2-187/*.feature
+                    npm run file "*/**/GX2-187/*.feature"
                     npm run report
                   record: true
               env:

@@ -23,8 +23,8 @@ jobs:
               uses: cypress-io/github-action@v4
               with:
                   browser: chrome
+                  spec: cypress/e2e/cucumber-test/Suites/GX2-187/GX2-187.feature
                   command: |
-                    npm run file "*/**/GX2-187/*.feature"
                     npm run report
                   record: true
               env:

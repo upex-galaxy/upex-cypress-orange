@@ -38,7 +38,7 @@ jobs:
               if: always()
               with:
                   name: cypress-cucumber-html
-                  path: ./reports/cucumber-report.html
+                  path: ./reports/cucumber-report/index.html
 
             - name: ✅Import Test Results to Xray
               uses: mikepenz/xray-action@v2

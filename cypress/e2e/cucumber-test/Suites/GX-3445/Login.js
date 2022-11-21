@@ -18,7 +18,7 @@ context('Feature: Login', () => {
 		})
 		// (Then = Resultado Esperado) Entonces: el usuario DEBERÍA poder iniciar sesión en la Website.
 		Then('User should be able to login to the Website', () => {
-			cy.url().should('include', 'viewEmployeeList')
+			cy.url().should('include', 'dashboard')
 		})
 		// (And = Extensión) Y Entonces: debería visualizarse un mensaje amigable como "bla bla bla"
 		And('should display a friendly message as {string}', (msg) => {
@@ -35,7 +35,7 @@ context('Feature: Login', () => {
 		})
 		// (Then = Resultado Esperado) Entonces: el usuario DEBERÍA poder iniciar sesión en la Website.
 		Then('User should NOT be able to login to the Website', () => {
-			cy.url().should('not.include', 'viewEmployeeList')
+			cy.url().should('not.include', 'dashboard')
 		})
 		// (And = Extensión) Y Entonces: debería visualizarse un mensaje amigable como "bla bla bla"
 		And('should display an error message as {string}', (msg) => {

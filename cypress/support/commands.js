@@ -9,10 +9,9 @@
 // ***********************************************
 
 import 'cypress-file-upload';
+import 'cypress-wait-until'
 require('@4tw/cypress-drag-drop')
-import 'cypress-wait-until';
-
-
+require('cypress-downloadfile/lib/downloadFileCommand')
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
@@ -29,7 +28,7 @@ import 'cypress-wait-until';
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-
+// 👾🚩🚩🚩NO ESCRIBAS UN NUEVO COMANDO EN ESTA LINEA, DIRÍGETE HASTA LA ÚLTIMA LINEA DISPONIBLE👇🏻👇🏻👇🏻✅
 
 Cypress.Commands.add("Login", () =>
 {
@@ -60,3 +59,7 @@ Cypress.Commands.add("dropDown", (index,type) =>
 })
 
 
+
+
+
+// 👾🚩🚩🚩☝🏻☝🏻☝🏻COMIENZA A ESCRIBIR TU NUEVO COMMAND AQUÍ! A PARTIR DE ESTA LÍNEA DISPONIBLE☝🏻☝🏻☝🏻✅

@@ -1,9 +1,8 @@
 # 🧙🏻‍♂️BIENVENIDO A LOS PIPELINES DE CONTINUOUS INTEGRATION DE "ARI - Hija de Aurora"!
-# 🤖Este Pipeline de CI se activa al PUSHEAR, y consiste en ejecutar los tests de una US e importar los resultados a Jira!🚀
+# 🤖Este Pipeline de CI se activa al PUSHEAR, y consiste en ejecutar los tests de una US en un ambiente Integrado!🚀
 # 👩🏻‍🔬Para utilizar este Pipeline de Ari, sigue los siguientes pasos:
 #     1ro: debes modificar el script: "npm run file" + tu archivo de Prueba Ejecutable (ver ejemplo en este archivo) 
-#     2do: debes modificar la propiedad: "testExecKey:" + tu ID del TX de Jira para importar automáticamente el resultado.
-#     3ro: guarda los cambios en el repositorio local (git add + git commit) y envíalos al Repo Remoto (git push)
+#     2ro: guarda los cambios en el repositorio local (git add + git commit) y envíalos al Repo Remoto (git push)
 #     Expected Result: Debería ejecutarse este Pipeline de GitHub Actions y correr cada uno de los Jobs declarados aquí. 
 
 name: 🤖CI run (BUILD) Test Suite Execution⚡
@@ -24,8 +23,7 @@ jobs:
               with:
                   browser: chrome
                   command: |
-                    npm run file cypress/e2e/cucumber-test/Suites/GX2-187/GX2-187.feature
-                    npm run report
+                    npm run file cypress/e2e/cucumber-test/Suites/GX-3445/Login.feature
                   record: true
               env:
                   # pass the Dashboard record key as an environment variable
@@ -38,23 +36,28 @@ jobs:
               if: always()
               with:
                   name: cypress-cucumber-html
-                  path: ./reports/cucumber-report.html
+                  path: ./reports/cucumber-report/index.html
 
-            - name: ✅Import Test Results to Xray
-              uses: mikepenz/xray-action@v2
-              with:
-                  username: ${{secrets.XRAY_CLIENT_ID}}
-                  password: ${{secrets.XRAY_CLIENT_SECRET}}
-                  testFormat: 'cucumber'
-                  testPaths: 'reports/cucumber-report.json'
-                  testExecKey: 'GX2-189'
-                  projectKey: 'GX2'
-            - name: 🔔Slack Notification of Done
-              uses: rtCamp/action-slack-notify@v2.2.0
-              env:
-                SLACK_WEBHOOK: https://hooks.slack.com/services/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
-                SLACK_USERNAME: Ari✨
-                SLACK_MESSAGE: ':test_tube: Test Execution successfully imported to Jira-Xray :rocket:'
-                SLACK_COLOR: ${{ job.status }}
-                SLACK_ICON: https://i.imgur.com/peg9swL.png
+            # 👩🏻‍💻🛑 NO USAR EL PLUGIN DE GITHUB ACTION PARA IMPORTAR CUCUMBER A JIRA. No está funcionando. 
+            # El problema es que cuando se importan los Resultados a un TX especificado, no lo encuentra, y autogenera un nuevo TX.
+            # Próximamente usaremos Jenkins para hacer esta tarea específica.
+            # - name: ✅Import Test Results to Xray
+            #   uses: mikepenz/xray-action@v2
+            #   with:
+            #       username: ${{secrets.XRAY_CLIENT_ID}}
+            #       password: ${{secrets.XRAY_CLIENT_SECRET}}
+            #       testFormat: 'cucumber'
+            #       testPaths: 'reports/cucumber-report.json'
+            #       testExecKey: 'GX-3446'
+            #       projectKey: 'GX'
+
+            # 🛑Cuando se usa "Windows" lamentablemente no funciona este plugin. Se depreca entonces.
+            # - name: 🔔Slack Notification of Done
+            #   uses: rtCamp/action-slack-notify@v2.2.0
+            #   env:
+            #     SLACK_WEBHOOK: https://hooks.slack.com/services/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
+            #     SLACK_USERNAME: Ari✨
+            #     SLACK_MESSAGE: ':test_tube: Test Execution successfully imported to Jira-Xray :rocket:'
+            #     SLACK_COLOR: ${{ job.status }}
+            #     SLACK_ICON: https://i.imgur.com/peg9swL.png
 

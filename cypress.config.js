@@ -1,4 +1,6 @@
 const { defineConfig } = require('cypress');
+const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
+const { verifyDownloadTasks } = require('cy-verify-downloads');
 
 module.exports = defineConfig({
 	// @Ely: En GALAXY L2, Comenzamos a usar el CYPRESS DASHBOARD, por favor no cambiar el projectId:
@@ -28,6 +30,8 @@ module.exports = defineConfig({
 		experimentalSessionAndOrigin: true,
 		// Use Cypress plugins:
 		setupNodeEvents(on, config) {
+			on('task', {downloadFile})
+			on('task', verifyDownloadTasks);
 			return require('./cypress/plugins/index.js')(on, config)			
 		},		
 		// Glob pattern to determine what test files to load:

@@ -21,12 +21,12 @@ Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario
 		And hace click en el botón "Save"
 		Then debe aparecer un Log Message indicando "Successfully Saved"
 		And se direcciona a la página con los detalles personales del perfil del usuario creado
-		And se agrega el nuevo empleado en la lista de empleados Employee List "<employeeID>" y el nuevo usuario en el Admin
+		And se agrega el nuevo empleado en la lista de empleados Employee List "<employeeID>" y el nuevo usuario en el Admin "<username>"
 		Examples:
-			| firstName                      | middleName | lastName                      | employeeID | username  | password                                                                   | confirmPassword                                                            |
-			| Manuela                        | Ramona     | Gonzalez                      | 0265       | CandelaBr | iN+b5C-W                                                                   | iN+b5C-W                                                                   |
-			| Carlajosefinaaaaaaaaaaaaaaaaaa | **         | A                             | 0354897976 | Carla     | k3beeA46j)q)7_K7Vw*H3YArG7@9z]WR[-yBW@]4Q8d57%adQ9/iN4$5Fxe5)V9p@Zn%92R.u> | k3beeA46j)q)7_K7Vw*H3YArG7@9z]WR[-yBW@]4Q8d57%adQ9/iN4$5Fxe5)V9p@Zn%92R.u> |
-			| r                              | '          | RodrIguezzzzzzzzzzzzzzzzzzzzz | 1          | LuisRod2  | 9jL5X?h!w3L                                                                | 9jL5X?h!w3L                                                                |
+			| firstName                      | middleName | lastName                      | employeeID | username  | password                                               | confirmPassword                                        |
+			| Manuela                        | Ramona     | Gonzalez                      | 02656      | CandelaBr | iN+b5C-W                                               | iN+b5C-W                                               |
+			| Carlajosefinaaaaaaaaaaaaaaaaaa | **         | A                             | 0354897976 | Carla     | k3beeA46j)q)7_K7Vw*H3YArG7@9z]WR[-yBW@]4Q8d57%adQ9/iN4 | k3beeA46j)q)7_K7Vw*H3YArG7@9z]WR[-yBW@]4Q8d57%adQ9/iN4 |
+			| r                              | '          | RodrIguezzzzzzzzzzzzzzzzzzzzz | 12          | LuisRod2  | 9jL5X?h!w3L                                            | 9jL5X?h!w3L                                            |
 
 	Scenario Outline: 252 | TC2: Intentar validar que administrador agregue campos invalidos como firstName, lastName y middleName
 		When el usuario ingresa datos en firstName como "<firstName>", middleName como "<middleName>", lastName como "<lastName>"

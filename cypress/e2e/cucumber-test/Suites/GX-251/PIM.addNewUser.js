@@ -21,6 +21,8 @@ context('Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario', (
 		cy.contains(toggle).should('be.visible')
 	})
 
+	
+	// Hay un Caso de Prueba NEGATIVO, que está fallando. Se removerá de la ejecución hasta el Fixing (ver .feature)
 	describe('252 | TC1: Validar que administrador pueda incorporar un nuevo empleado con usuario al sistema de gestión', function() {
 		When('rellena todos los datos requeridos incluyendo credenciales como {string}{string}{string}{string}{string}{string}{string}', (firstName, middleName, lastName, employeeID, username, password, confirmPassword) => {
 				cy.get("[name='firstName']").clear().type(firstName).should('have.value', firstName)

@@ -21,10 +21,11 @@ context('Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario', (
 		cy.contains(toggle).should('be.visible')
 	})
 
-	
 	// Hay un Caso de Prueba NEGATIVO, que está fallando. Se removerá de la ejecución hasta el Fixing (ver .feature)
-	describe('252 | TC1: Validar que administrador pueda incorporar un nuevo empleado con usuario al sistema de gestión', function() {
-		When('rellena todos los datos requeridos incluyendo credenciales como {string}{string}{string}{string}{string}{string}{string}', (firstName, middleName, lastName, employeeID, username, password, confirmPassword) => {
+	describe('252 | TC1: Validar que administrador pueda incorporar un nuevo empleado con usuario al sistema de gestión', function () {
+		When(
+			'rellena todos los datos requeridos incluyendo credenciales como {string}{string}{string}{string}{string}{string}{string}',
+			(firstName, middleName, lastName, employeeID, username, password, confirmPassword) => {
 				cy.get("[name='firstName']").clear().type(firstName).should('have.value', firstName)
 				cy.get("[name='firstName']").invoke('val').as('valueName')
 
@@ -50,38 +51,40 @@ context('Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario', (
 		})
 
 		And('debe aparecer un Log Message indicando {string}', (msg) => {
-			cy.get('#oxd-toaster_1').find('p')
-			cy.contains(msg).should('be.visible')
+			cy.get('#oxd-toaster_1').find('p').should('have.text', msg).and('be.visible')
 		})
 
-		And('se direcciona a la página con los detalles personales del perfil del usuario creado', function() {
+		And('se direcciona a la página con los detalles personales del perfil del usuario creado', function () {
 			cy.url().should('contain', 'viewPersonalDetails')
 			cy.get('.oxd-form input').eq(0).should('have.value', this.valueName)
 			cy.get('.oxd-form input').eq(2).should('have.value', this.valueLastName)
 			cy.get('.oxd-form input').eq(4).should('have.value', this.valueEmployeeId)
 		})
-		
-		And('se agrega el nuevo empleado en la lista de empleados Employee List {string} y el nuevo usuario en el Admin {string}', (employeeID, username) => {
-			cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList')
-			cy.url().should('contain', 'viewEmployeeList')
-			cy.get('.oxd-form-row input').eq(1).clear().type(employeeID).should('have.value', employeeID)
 
-			cy.get('button[type=submit]')
-			cy.contains('Search').click({force: true})
+		And(
+			'se agrega el nuevo empleado en la lista de empleados Employee List {string} y el nuevo usuario en el Admin {string}',
+			(employeeID, username) => {
+				cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList')
+				cy.url().should('contain', 'viewEmployeeList')
+				cy.get('.oxd-form-row input').eq(1).clear().type(employeeID).should('have.value', employeeID)
 
-			cy.get('.oxd-table-card').should('have.length', 1)
+				cy.get('button[type=submit]')
+				cy.contains('Search').click({force: true})
 
-			cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers')
-			cy.url().should('contain', 'viewSystemUsers')
+				cy.get('.oxd-table-card').should('have.length', 1)
 
-			cy.get('.oxd-form-row input').eq(0).clear().type(username).should('have.value', username)
+				cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers')
+				cy.url().should('contain', 'viewSystemUsers')
 
-			cy.get('button[type=submit]')
-			cy.contains('Search').click({force: true})
+				cy.get('.oxd-form-row input').eq(0).clear().type(username).should('have.value', username)
 
-			cy.get('.oxd-table-card').should('have.length', 1)
-			cy.get('.oxd-table-cell').eq(1).children().should('have.text', username)
-		})
+				cy.get('button[type=submit]')
+				cy.contains('Search').click({force: true})
+
+				cy.get('.oxd-table-card').should('have.length', 1)
+				cy.get('.oxd-table-cell').eq(1).children().should('have.text', username)
+			}
+		)
 	})
 
 	describe('252 | TC2: Intentar validar que administrador agregue campos invalidos como firstName, lastName y middleName', () => {

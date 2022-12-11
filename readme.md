@@ -1,6 +1,6 @@
 [![CYPEX L2 ORANGE-HRM](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/31yjoc&style=for-the-badge&logo=cypress)](https://dashboard.cypress.io/projects/31yjoc/runs)
 
-# Testing Automation - Cypress 10.9.0 + Cucumber
+# 🧪Testing Automation - Cypress 12🧙🏻‍♂️ + Cucumber
 ![UPEX's Banners (linkedin) (1)](https://user-images.githubusercontent.com/91127281/189470339-acea5782-16f1-4f06-9ce0-df54fd3ead9d.png)
 
 Cypress es el MEJOR FRAMEWORK DE AUTOMATION E2E actualmente! No hay rival! Además de que es el framework más amigable para aprender!

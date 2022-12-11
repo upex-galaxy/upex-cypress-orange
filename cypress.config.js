@@ -35,5 +35,11 @@ module.exports = defineConfig({
 		specPattern: ['**/*.feature', 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'],
 		// Url used as prefix for cy.visit() or cy.request() command's url:
 		baseUrl: 'https://opensource-demo.orangehrmlive.com/'
+	},
+	env: {
+		userData:{
+			username: "Admin",
+			password: "admin123"
+		}
 	}
 })

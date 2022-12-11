@@ -38,7 +38,7 @@ jobs:
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                    npm run file */**/cucumber-test/**/GX-2/*.feature
+                    npm run file */**/cucumber-test/**/GX2-508/*.feature
                   record: true
               env:
                   # pass the Dashboard record key as an environment variable

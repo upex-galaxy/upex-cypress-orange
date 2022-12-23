@@ -46,17 +46,17 @@ jobs:
                   # pass GitHub token to allow accurately detecting a build vs a re-run build
                   GITHUB_TOKEN: ${{ secrets.UPEX_GITHUB_TOKEN }}
 
-            - name: 📬Generate Cucumber Report
+            - name: 📬Generate Cucumber HTML Report
               if: always()
               run: |
                 npm run report:cucumber
 
-            - name: 📊Upload Artifact HTML Report
-              uses: actions/upload-artifact@v3
+            - name: 📊Upload Artifact Cucumber HTML Report
               if: always()
+              uses: actions/upload-artifact@v3
               with:
-                  name: test-cucumber-report
-                  path: reports/cucumber-report
+                  name: test-report
+                  path: reports/cucumber-html-report
 
             - name: ✅Import Test Results to Xray
               uses: mikepenz/xray-action@v2

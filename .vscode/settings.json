@@ -74,7 +74,7 @@
 		".cypress-cucumber-preprocessorrc.json": "cucumber",
 		"cucumber-report.json": "cucumber",
 		"cucumber-messages.ndjson": "cucumber",
-		"cucumber-html-report.js": "cucumber",
+		"cucumber-html-report.cjs": "cucumber",
 		"cucumber-json-formatter.exe": "cucumber",
 		"settings.json": "Vscode",
 		"*.yml": "todo",

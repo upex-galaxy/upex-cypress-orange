@@ -32,17 +32,21 @@ require('cypress-downloadfile/lib/downloadFileCommand')
 
 Cypress.Commands.add("Login", () =>
 {
+    const username = Cypress.env('userData').username
+    const password = Cypress.env('userData').password
+
     cy.session("login",()=>{
         cy.visit("/")// visita la url
         cy.url().should("contain", "orangehrm")
 
-        cy.get("[name='username']").type("Admin")//Obtener input Username y escribir el usuario
+        cy.get("[name='username']").type(username)//Obtener input Username y escribir el usuario
         .should("have.value","Admin") // Debería contener el el valor de usuario
 
-        cy.get("[name='password']").type("admin123") //Obtener input Password y escribir el contraseña
+        cy.get("[name='password']").type(password) //Obtener input Password y escribir el contraseña
         .should("have.value", "admin123") // Debería contener el el valor de la contraseña
 
         cy.get("[type='submit']").click() // Contiene Login, hacer click
+
     })
 })
 
@@ -57,7 +61,6 @@ Cypress.Commands.add("dropDown", (index,type) =>
         cy.get("[role='listbox']").children().eq(index).click()
     })
 })
-
 
 
 

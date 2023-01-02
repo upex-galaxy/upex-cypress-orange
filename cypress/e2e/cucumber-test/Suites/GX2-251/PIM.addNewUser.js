@@ -7,7 +7,7 @@ context('Feature: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario', (
 	})
 
 	And('se le autoasigne un perfil de administrador por defecto', () => {
-		cy.Login('Admin', 'admin123')
+		cy.Login()
 	})
 
 	And('el administrador se ubica en la sección {string}', (section) => {

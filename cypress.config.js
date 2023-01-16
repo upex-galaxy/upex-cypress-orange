@@ -50,7 +50,7 @@ export default defineConfig({
 		// baseUrl: ""
 	},
 	env:{
-
+		baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
 		AdminUser:{
 
 			username: "Admin",

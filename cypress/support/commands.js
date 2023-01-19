@@ -57,19 +57,34 @@ Cypress.Commands.add('SignIn', () => {
 })
 
 Cypress.Commands.add('UpdateEmployeeFirstName', (the) => {
-	employee.get.EmployeeFirstNameInput().clear()
-	.type(the.employeeNewData.firstName)
-	.invoke('prop', '_value').should('eq', the.employeeNewData.firstName)
+	employee.get
+		.EmployeeFirstNameInput()
+		.clear()
+		.type(the.employeeNewData.firstName)
+		.invoke('prop', '_value')
+		.should('eq', the.employeeNewData.firstName)
 })
 
 Cypress.Commands.add('UpdateEmployeeMiddleName', (the) => {
-	employee.get.EmployeeMiddleNameInput().clear()
-	.type(the.employeeNewData.middleName)
-	.invoke('prop', '_value').should('eq', the.employeeNewData.middleName)
+	employee.get
+		.EmployeeMiddleNameInput()
+		.clear()
+		.type(the.employeeNewData.middleName)
+		.invoke('prop', '_value')
+		.should('eq', the.employeeNewData.middleName)
 })
 
 Cypress.Commands.add('UpdateEmployeeLastName', (the) => {
-	employee.get.EmployeeLastNameInput().clear()
-	.type(the.employeeNewData.lastName)
-	.invoke('prop', '_value').should('eq', the.employeeNewData.lastName)
+	employee.get
+		.EmployeeLastNameInput()
+		.clear()
+		.type(the.employeeNewData.lastName)
+		.invoke('prop', '_value')
+		.should('eq', the.employeeNewData.lastName)
+})
+
+Cypress.Commands.add('GetCurrentUrl', () => {
+	cy.url().then((url) => {
+	Cypress.env('currentUrl', url)
+	})
 })

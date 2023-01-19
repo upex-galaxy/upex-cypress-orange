@@ -1,4 +1,4 @@
-Feature: GX2-6837 | OrangeHRM | PIM | Editar perfil de empleado
+Feature: GX-6837 | OrangeHRM | PIM | Editar perfil de empleado
 
     Background: Precondiciones para iniciar sesión
         Given el administrador está registrado en el sistema exitosamente

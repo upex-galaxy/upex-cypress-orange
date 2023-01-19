@@ -12,32 +12,35 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 		})
 	})
 	And('abre el VPD del empleado para editar', () => {
-		cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList') // donde puedo agregar este endpoint para que no este harcoded
-        pim.get.pencilButton().click({ force: true })
-        employee.get.EmployeeProfilePicture().should('exist').and('be.visible')
+		cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList') //harcoded
+		pim.get.pencilButton().click({ force: true })
+		employee.get.EmployeeProfilePicture().should('exist').and('be.visible')
 	})
 
 	describe('GX2-6837 | TC1: admin edita información personal del empleado', () => {
 		When('el admin inserta nuevos valores en los campos del form', () => {
-            cy.UpdateEmployeeFirstName(the)
-            cy.UpdateEmployeeMiddleName(the)
-            cy.UpdateEmployeeLastName(the)
+			cy.GetCurrentUrl()
+			cy.UpdateEmployeeFirstName(the)
+			cy.UpdateEmployeeMiddleName(the)
+			cy.UpdateEmployeeLastName(the)
 		})
 		And('hace click en el botón Save', () => {
-            employee.clickSavePersonalDetails()
+			employee.clickSavePersonalDetails()
 		})
 		Then('debe aparecer un Log Message indicando Success, Succesfully Saved', () => {
-			cy.log('Then')
+			employee.get.SuccessToastMessage().invoke('text').should('eq', 'Successfully Updated') //harcoded
 		})
 		And('se mantiene en la página del perfil del empleado', () => {
-			cy.log('And')
+			cy.reload()
+			employee.get.EmployeeFirstAndLastName().invoke('text').should('eq', `${the.employeeNewData.firstName} ${the.employeeNewData.lastName}`)
+			cy.url().should('eq', Cypress.env('currentUrl'))
 		})
 		And('la información del empleado es actualizada en la Tabla del Employee List', () => {
-			cy.log('And')
-		})
+            cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList') //harcoded
+
+        })
 	})
 })
-
 
 // Este código abajo es para que NO APAREZCA los XHR o Fetch en el Test Runner de Cypress, para que se vea limpio.
 Cypress.on('uncaught:exception', (err, runnable) => {

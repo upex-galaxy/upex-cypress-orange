@@ -32,8 +32,8 @@ require('cypress-downloadfile/lib/downloadFileCommand')
 
 Cypress.Commands.add("Login", () =>
 {
-    const username = Cypress.env('userData').username
-    const password = Cypress.env('userData').password
+    const username = Cypress.env('AdminUser').username
+    const password = Cypress.env('AdminUser').password
 
     cy.session("login",()=>{
         cy.visit("/")// visita la url

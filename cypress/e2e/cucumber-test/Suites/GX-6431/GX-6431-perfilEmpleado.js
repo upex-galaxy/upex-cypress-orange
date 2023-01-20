@@ -9,7 +9,7 @@ context("El administrador debe estar registrado y loggueado en el site exitosame
     })
 
     And("el administrador ingresa unas credenciales validas consiguiendo acceso al site", () => {
-        cy.Login('Admin', 'admin123')
+        cy.Login()
     })
 
     Then("el administrador debe posicionarse en la pestaña PIM y Employee List", () => {
@@ -21,11 +21,22 @@ context("El administrador debe estar registrado y loggueado en el site exitosame
 
         When("el admin inserta nuevos valores en los campos del form", () => {
         cy.fixture("DOM/PIM/editarEmpleado.page").then((the)=>{
+            
             cy.getRandomEmployee()
             PersonalDetail.typeFirstName(the.personal_Details.firstName)
-            // inputs.typeLastName()
-            // inputs.typeBirthDate()
-            // inputs.selectNationality()
+            PersonalDetail.typeLastName(the.personal_Details.lastName)
+            PersonalDetail.typeBirthDate(the.personal_Details.dateOfBirth)
+            PersonalDetail.selectNationality()
+            PersonalDetail.selectGender()
+            PersonalDetail.clickSubmit()
+            cy.get('#oxd-toaster_1').should('be.visible').then(()=>{
+                cy.get('[class*="content-text"]').eq(1).should('have.text','Successfully Updated')
+            })
+            //Assertions
+            cy.waitUntil(()=> cy.get('[class*=employee-name] h6').should('be.visible'))
+            PersonalDetail.inputs.employeeName().should('have.text','Upex Galaxy')
+            //Cuando Agrego otras asersiones falla la asersion numero 1
+            PersonalDetail.inputs.birthDate().should('have.text','1994-06-15')
         })
     })
 })

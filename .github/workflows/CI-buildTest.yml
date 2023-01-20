@@ -38,7 +38,7 @@ jobs:
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                    npm run file */**/cucumber-test/**/GX-2/*.feature
+                    npm run file */**/GX2-508/*.feature
                   record: true
               env:
                   # pass the Dashboard record key as an environment variable
@@ -46,12 +46,17 @@ jobs:
                   # pass GitHub token to allow accurately detecting a build vs a re-run build
                   GITHUB_TOKEN: ${{ secrets.UPEX_GITHUB_TOKEN }}
 
-            - name: 📊Upload Artifact HTML Report
-              uses: actions/upload-artifact@v3
+            - name: 📬Generate Cucumber HTML Report
               if: always()
+              run: |
+                npm run report:cucumber
+
+            - name: 📊Upload Artifact Cucumber HTML Report
+              if: always()
+              uses: actions/upload-artifact@v3
               with:
                   name: test-report
-                  path: mochawesome-report
+                  path: reports/cucumber-html-report
 
             - name: ✅Import Test Results to Xray
               uses: mikepenz/xray-action@v2
@@ -63,12 +68,12 @@ jobs:
                   testExecKey: 'GX-5'
                   projectKey: 'GX'
 
-            - name: 🔔Slack Notification of Done
-              uses: rtCamp/action-slack-notify@v2.2.0
-              env:
-                SLACK_WEBHOOK: https://hooks.slack.com/services/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
-                SLACK_USERNAME: Ari✨
-                SLACK_MESSAGE: ':test_tube: Test Execution successfully imported to Jira-Xray :rocket:'
-                SLACK_COLOR: ${{ job.status }}
-                SLACK_ICON: https://i.imgur.com/peg9swL.png
+            # - name: 🔔Slack Notification of Done
+            #   uses: rtCamp/action-slack-notify@v2.2.0
+            #   env:
+            #     SLACK_WEBHOOK: https://hooks.slack.com/services/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
+            #     SLACK_USERNAME: Ari✨
+            #     SLACK_MESSAGE: ':test_tube: Test Execution successfully imported to Jira-Xray :rocket:'
+            #     SLACK_COLOR: ${{ job.status }}
+            #     SLACK_ICON: https://i.imgur.com/peg9swL.png
 

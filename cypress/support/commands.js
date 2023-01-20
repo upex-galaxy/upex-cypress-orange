@@ -58,6 +58,38 @@ Cypress.Commands.add("dropDown", (index,type) =>
     })
 })
 
+Cypress.Commands.add("getRandomEmployee",()=>{
+    // const json = require("../../../../fixtures/DOM/PIM/editarEmpleado.page.json")
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+    let getRandomInt1 = getRandomInt(0,36)
+    cy.get('[role="rowgroup"]').children().eq(getRandomInt1).within(()=>{
+        cy.get('[role="row"]').within(() => {
+            cy.get('[role="cell"]').eq(2).children().then((inside) => {
+                const firstName = inside.text()
+                Cypress.env('firstName', firstName)
+            })
+            cy.get('[role="cell"]').eq(3).children().then((inside) => {
+                const lastName = inside.text()
+                Cypress.env('lastName', lastName)
+            })
+        })
+        cy.get('button').eq(1).click()
+    })
+    cy.waitUntil(()=> cy.get('[class*=employee-name] h6').should('be.visible'))
+            cy.get('[class*=employee-name] h6').then((actualName)=>{
+                const firstName = Cypress.env('firstName').split(" ")[0]
+                const lastName = Cypress.env('lastName')
+                const expectedName = `${firstName} ${lastName}`
+                expect(actualName.text()).equal(expectedName)
+})
+})
+
+
 
 
 

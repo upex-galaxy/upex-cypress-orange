@@ -1,0 +1,11 @@
+{
+    "AUTH": "web/index.php/auth/login",
+    "username": "Admin",
+    "password": "admin123",
+
+    "personal_Details":{
+        "firstName": "Upex",
+        "lastName": "Galaxy",
+        "dateOfBirth": "1994-06-15"
+    }    
+}

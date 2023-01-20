@@ -1,6 +1,6 @@
 Feature: OrangeHRM | Account | Recuperar contraseña olvidada por usuario
 
- Background:
+Background:
         Given el usuario esta ubicado en la pagina de recuperación de contraseña
 		
 	
@@ -10,8 +10,8 @@ Feature: OrangeHRM | Account | Recuperar contraseña olvidada por usuario
 		And hace click en Reset Password
 		Then aparecera un mensaje de confirmacion como "<msj>"
 		Examples:
-		  |usernamevalido|msj|
-		  | Admin |Reset Password link sent successfully|
+		|usernamevalido|msj|
+		| Admin |Reset Password link sent successfully|
 
 
 	# 🚩🧪Este TC no puede ejecutarse porque hay un defecto en la feature según los requerimientos:

@@ -83,8 +83,19 @@ Cypress.Commands.add('UpdateEmployeeLastName', (the) => {
 		.should('eq', the.employeeNewData.lastName)
 })
 
+Cypress.Commands.add('GetEmployeeId', () => {
+	cy.then(() => {
+		employee.get
+			.EmployeeId()
+			.invoke('prop', '_value')
+			.then((employeeIdValue) => {
+				Cypress.env('employeeId', employeeIdValue)
+			})
+	})
+})
+
 Cypress.Commands.add('GetCurrentUrl', () => {
 	cy.url().then((url) => {
-	Cypress.env('currentUrl', url)
+		Cypress.env('currentUrl', url)
 	})
 })

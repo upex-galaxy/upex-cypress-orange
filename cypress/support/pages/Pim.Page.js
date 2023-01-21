@@ -1,19 +1,21 @@
-class Pim{
+class Pim {
+	// Agarrable de Cypress
+	// Propiedades / Elementos:
+	get = {
+		pencilButton: () => cy.get('i[class$="bi-pencil-fill"]', { timeOut: 10000 }).eq(2),
+		employeeIdInput: () => cy.get('input[class$="oxd-input--active"]').eq(1),
+		searchButton: () => cy.get('button[type="submit"]'),
+        employeeRow: () => cy.get('div[class="oxd-table-card"]').eq(0)
+        //orangehrm-employee-list
+	}
 
-    // Agarrable de Cypress
-    // Propiedades / Elementos:
-    get = {
-        pencilButton: ()=> cy.get('i[class$="bi-pencil-fill"]', { timeOut: 10000 }).eq(2),
-        /*passwordInput: ()=> cy.get('[name="password"]'),
-        submitButton: ()=> cy.get('[type="submit"]'),
-        forgotLink: ()=> cy.get('[class*="login-forgot"] p'),
-        */
-    }
+	enterEmployeeId(type) {
+		this.get.employeeIdInput().type(type)
+	}
 
-    enterUsername(type){
-        this.get.usernameInput().type(type)
-    }
-
+	clickOnSearchButton() {
+		this.get.searchButton().click({force:true})
+	}
 }
 
-export const pim = new Pim; 
+export const pim = new Pim()

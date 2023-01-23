@@ -23,7 +23,11 @@ class personalDetail{
     selectNationality(){
         const option = Math.floor(Math.random()*(194-1))
         this.inputs.nationalityDropDown().click({force:true})
-        this.inputs.nationalityOptions().eq(option).click()
+        this.inputs.nationalityOptions().eq(option).click().then((text)=>{
+            const assertion = text.text()
+            cy.log(assertion)
+            expect(text).to.have.text(assertion)
+        })
     }
     selectGender(){
         const gender = Math.floor(Math.random()*(2-1))

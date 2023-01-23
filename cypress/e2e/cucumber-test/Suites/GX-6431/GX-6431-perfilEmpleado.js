@@ -26,17 +26,24 @@ context("El administrador debe estar registrado y loggueado en el site exitosame
             PersonalDetail.typeFirstName(the.personal_Details.firstName)
             PersonalDetail.typeLastName(the.personal_Details.lastName)
             PersonalDetail.typeBirthDate(the.personal_Details.dateOfBirth)
-            PersonalDetail.selectNationality()
+            PersonalDetail.selectNationality() //Include Nationality Assertion
             PersonalDetail.selectGender()
             PersonalDetail.clickSubmit()
             cy.get('#oxd-toaster_1').should('be.visible').then(()=>{
                 cy.get('[class*="content-text"]').eq(1).should('have.text','Successfully Updated')
+                cy.reload()
             })
-            //Assertions
+            //Full Name Assertion
             cy.waitUntil(()=> cy.get('[class*=employee-name] h6').should('be.visible'))
             PersonalDetail.inputs.employeeName().should('have.text','Upex Galaxy')
-            //Cuando Agrego otras asersiones falla la asersion numero 1
-            PersonalDetail.inputs.birthDate().should('have.text','1994-06-15')
+            //BirthDate Assertion
+            PersonalDetail.inputs.birthDate().click().then(()=>{
+                cy.get('[class*="selector-month"] div p').should('have.text','June')
+                cy.get('[class*="selector-year"] div p').should('have.text','1994')
+                cy.get('[class*="dates-grid"]').within(()=>{
+                    cy.get('[class*="date-wrapper"]').eq(14).should('have.text','15')
+                })
+            })
         })
     })
 })

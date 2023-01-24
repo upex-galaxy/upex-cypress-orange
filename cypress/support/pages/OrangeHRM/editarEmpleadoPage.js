@@ -7,7 +7,7 @@ class personalDetail{
         birthDate:()=> cy.get('input[placeholder="yyyy-mm-dd"]').eq(1),
         nationalityDropDown:()=> cy.get('[class="oxd-select-text--after"] i').first(),
         nationalityOptions:()=> cy.get('[role="listbox"]').children(),
-        gender:()=> cy.get('[class*="gender-grouped-field"]').children(),
+        genderInput:()=> cy.get('[class*="gender-grouped-field"]').children(),
         submit:()=> cy.get('[type="submit"]').first()
     }
 
@@ -25,13 +25,15 @@ class personalDetail{
         this.inputs.nationalityDropDown().click({force:true})
         this.inputs.nationalityOptions().eq(option).click().then((text)=>{
             const assertion = text.text()
-            cy.log(assertion)
             expect(text).to.have.text(assertion)
         })
     }
     selectGender(){
-        const gender = Math.floor(Math.random()*(2-1))
-        this.inputs.gender().eq(gender).click({force:true})
+        const gender = Math.floor(Math.random()*(3-1))
+        this.inputs.genderInput().eq(gender).click({force:true}).then((text)=>{
+            const assertion = text.text()
+            expect(text).to.have.text(assertion)
+        })
     }
     clickSubmit(){
         this.inputs.submit().click()

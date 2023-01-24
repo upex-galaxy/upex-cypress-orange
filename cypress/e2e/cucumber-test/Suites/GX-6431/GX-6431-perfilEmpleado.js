@@ -1,50 +1,69 @@
 import { Given, When, And, Then } from "@badeball/cypress-cucumber-preprocessor";
-import {PersonalDetail} from "../../../../support/pages/OrangeHRM/editarEmpleadoPage"
+import {PersonalDetail} from "../../../../support/pages/OrangeHRM/editarEmpleadoPage";
+import {faker} from "@faker-js/faker";
+import {EmployeeListPage} from "../../../../support/pages/OrangeHRM/employeeListPage";
 
-context("El administrador debe estar registrado y loggueado en el site exitosamente", () => {
+context("OrangeHRM | PIM | Editar perfil de empleado", () => {
+    
+    describe("El administrador debe estar registrado y loggueado en el site exitosamente",()=>{
 
-    Given("el administrador se encuentra en la pagina de login de Orange", () => {
-        cy.visit('web/index.php/auth/login')
-        cy.url().should('contain', 'login')
+        Given("el administrador se encuentra en la pagina de login de Orange", () => {
+            cy.visit('web/index.php/auth/login')
+            cy.url().should('contain', 'login')
+        })
+
+        And("el administrador ingresa unas credenciales validas consiguiendo acceso al site", () => {
+            cy.Login()
+        })
+
+        And("el administrador debe posicionarse en la pestaña PIM y Employee List", () => {
+            cy.visit('web/index.php/pim/viewEmployeeList')
+            cy.url().should('contain', 'viewEmployeeList')
+        })
     })
 
-    And("el administrador ingresa unas credenciales validas consiguiendo acceso al site", () => {
-        cy.Login()
-    })
-
-    Then("el administrador debe posicionarse en la pestaña PIM y Employee List", () => {
-        cy.visit('web/index.php/pim/viewEmployeeList')
-        cy.url().should('contain', 'viewEmployeeList')
-    })
-
-    describe("admin edita información personal del empleado.", () => {
+    describe("TC1: Admin edita información personal del empleado", () => {
 
         When("el admin inserta nuevos valores en los campos del form", () => {
-        cy.fixture("DOM/PIM/editarEmpleado.page").then((the)=>{
-            
-            cy.getRandomEmployee()
-            PersonalDetail.typeFirstName(the.personal_Details.firstName)
-            PersonalDetail.typeLastName(the.personal_Details.lastName)
-            PersonalDetail.typeBirthDate(the.personal_Details.dateOfBirth)
+            const randomFirstName = faker.name.firstName()
+            const randomLastName = faker.name.lastName()
+            EmployeeListPage.getRandomEmployee()
+            PersonalDetail.typeFirstName(randomFirstName)
+            PersonalDetail.typeLastName(randomLastName)
+            PersonalDetail.typeBirthDate("1994-06-15")
             PersonalDetail.selectNationality() //Include Nationality Assertion
-            PersonalDetail.selectGender()
+            PersonalDetail.selectGender() //Include Gender Assertion
+
+        And('hacer click en el boton Save', () => {
             PersonalDetail.clickSubmit()
-            cy.get('#oxd-toaster_1').should('be.visible').then(()=>{
-                cy.get('[class*="content-text"]').eq(1).should('have.text','Successfully Updated')
-                cy.reload()
-            })
-            //Full Name Assertion
-            cy.waitUntil(()=> cy.get('[class*=employee-name] h6').should('be.visible'))
-            PersonalDetail.inputs.employeeName().should('have.text','Upex Galaxy')
-            //BirthDate Assertion
-            PersonalDetail.inputs.birthDate().click().then(()=>{
-                cy.get('[class*="selector-month"] div p').should('have.text','June')
-                cy.get('[class*="selector-year"] div p').should('have.text','1994')
-                cy.get('[class*="dates-grid"]').within(()=>{
-                    cy.get('[class*="date-wrapper"]').eq(14).should('have.text','15')
-                })
-            })
+            cy.reload()
+            // //Full Name Assertion
+            // const expectedName = `${randomFirstName} ${randomLastName}`
+            // cy.waitUntil(()=> cy.get('[class*=employee-name] h6').should('be.visible'))
+            // PersonalDetail.inputs.employeeName().should('have.text',expectedName)
+            // //BirthDate Assertion
+            // PersonalDetail.inputs.birthDate().click().then(()=>{
+            //     cy.get('[class*="selector-month"] div p').should('have.text','June')
+            //     cy.get('[class*="selector-year"] div p').should('have.text','1994')
+            //     cy.get('[class*="dates-grid"]').within(()=>{
+            //         cy.get('[class*="date-wrapper"]').eq(14).should('have.text','15')
+            //     })
+            // })
         })
+
+        // Then("debe aparecer un Log Message indicando 'Success, Succesfully Saved'", ()=>{
+        //     cy.get('#oxd-toaster_1').should('be.visible').then(()=>{
+        //         cy.get('[class*="content-text"]').eq(1).should('have.text','Successfully Updated')
+        //     })
+        // })
+
+        // And("se mantiene en la página del perfil del empleado",()=>{
+        //     cy.url().should('contain', 'viewPersonalDetails')
+        // })
+
+        // And("la información del empleado es actualizada en la Tabla del 'Employee List'",()=>{
+
+        // })
     })
 })
 

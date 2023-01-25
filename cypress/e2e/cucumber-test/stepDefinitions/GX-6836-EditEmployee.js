@@ -16,7 +16,7 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 		})
 
 
-
+		
 	})
 	And('abre el VPD del empleado para editar', () => {
 		cy.visit(site.pages.pim)
@@ -24,7 +24,7 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 		employee.get.EmployeeProfilePicture().should('exist').and('be.visible')
 	})
 
-	describe('GX2-6837 | TC1: admin edita información personal del empleado', () => {
+	describe('TC1: admin edita información personal del empleado', () => {
 		When('el admin inserta nuevos valores en los campos del form', () => {
 			cy.GetCurrentUrl()
 			cy.GetEmployeeId()
@@ -59,6 +59,33 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 			})
 		})
 	})
+
+	describe('TC2: admin edita imagen de perfil del empleado', () => { 
+
+		When('el admin ingresa en la imagen del perfil del empleado', () =>{
+			//cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/29')
+			employee.clickEmployeeProfileImage()
+		})
+		
+		And('carga una nueva imagen de perfil en el UploadInput', ()=>{
+			employee.get.EmployeeChangeImageButton().selectFile('cypress/fixtures/images/NewProfilePicture.jpg', {force: true})
+		})
+
+		And('hace click en el botón "Save"', ()=>{
+            employee.clickSaveProfileImage()
+		})
+
+		Then('debe aparecer un Log Message indicando "Success, Succesfully Saved"', ()=>{
+            employee.get.SuccessToastMessage().invoke('text').should('eq', 'Successfully Updated')
+		})
+
+		And('debe visualizarse la nueva imagen de perfil en todas las vistas del empleado', ()=>{
+            
+		})
+
+ })
+
+
 })
 
 // Este código abajo es para que NO APAREZCA los XHR o Fetch en el Test Runner de Cypress, para que se vea limpio.

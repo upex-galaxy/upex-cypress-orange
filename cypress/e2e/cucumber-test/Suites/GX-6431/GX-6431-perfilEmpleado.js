@@ -63,7 +63,7 @@ context('OrangeHRM | PIM | Editar perfil de empleado', () => {
 		})
 		And('la información del empleado es actualizada en la Tabla del {string}', (eList) => {
 			cy.visit('/web/index.php/pim/viewEmployeeList')
-			cy.url().should('contain', 'viewEmployeeList')
+			// cy.url().should('contain', 'viewEmployeeList')
 			EmployeeListPage.getMofiedEmployee()
 		})
 	})

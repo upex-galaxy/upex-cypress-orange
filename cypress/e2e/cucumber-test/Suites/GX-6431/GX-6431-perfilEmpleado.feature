@@ -8,14 +8,14 @@ Feature: OrangeHRM | PIM | Editar perfil de empleado
   Scenario: TC1: Admin edita información personal del empleado
     When el admin inserta nuevos valores en los campos del form
     And hacer click en el boton "Save"
-    Then debe aparecer un Log Message indicando "Success, Succesfully Saved"
+    Then debe aparecer un Log Message indicando "Successfully Updated"
     And se mantiene en la página del perfil del empleado
     And la información del empleado es actualizada en la Tabla del "Employee List"
 
-  # Scenario: admin edita imagen de perfil del empleado.
-  #   When: el admin ingresa en la imagen del perfil del empleado
-  #   And: carga una nueva imagen de perfil en el UploadInput
-  #   // Cumpliendo con los requsitos de subida de archivo según las BR
-  #   And: hace click en el botón "Save"
-  #   Then: debe aparecer un Log Message indicando "Success, Succesfully Saved"
-  #   And: debe visualizarse la nueva imagen de perfil en todas las vistas del empleado.
+  Scenario: TC2: Admin edita imagen de perfil del empleado.
+    When el admin ingresa en la imagen del perfil del empleado
+    And carga una nueva imagen de perfil en el UploadInput
+    # Cumpliendo con los requsitos de subida de archivo según las BR
+    And hace click en el botón "Save"
+    Then debe aparecer una alerta indicando "Successfully Updated"
+    And debe visualizarse la nueva imagen de perfil en todas las vistas del empleado.

@@ -8,11 +8,18 @@ class personalDetail{
         nationalityDropDown:()=> cy.get('[class="oxd-select-text--after"] i').first(),
         nationalityOptions:()=> cy.get('[role="listbox"]').children(),
         genderInput:()=> cy.get('[class*="gender-grouped-field"]').children(),
-        submit:()=> cy.get('[type="submit"]').first()
+        submit:()=> cy.get('[type="submit"]').first(),
+        employeeImage:()=> cy.get('[class*="image-wrapper"]'),
+        uploadImage:()=> cy.get('[type="file"]'),
+        uploadButton:()=> cy.get('[role="none"]').eq(1),
+        imgContainer:()=> cy.get('[class$="imagesection"] [alt="profile picture"]')
     }
 
     typeFirstName(firstName){
         this.inputs.firstNameInput().clear().type(firstName)
+    }
+    clearMiddleName(){
+        this.inputs.middleNameInput().clear()
     }
     typeLastName(lastName){
         this.inputs.lastNameInput().clear().type(lastName)
@@ -37,6 +44,13 @@ class personalDetail{
     }
     clickSubmit(){
         this.inputs.submit().click()
+    }
+    clickImage(){
+        this.inputs.employeeImage().click()
+    }
+    actualizeImage(){
+        this.inputs.uploadButton().click()
+        this.inputs.uploadImage().selectFile('cypress/fixtures/images/upexlogo.png',{force:true})
     }
 }
 

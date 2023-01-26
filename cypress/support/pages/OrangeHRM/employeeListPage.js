@@ -12,9 +12,9 @@ class employeeListPage{
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min) + min);
         }
-        let getRandomInt1 = getRandomInt(0,36)
+        Cypress.env("getRandomInt1",getRandomInt(0,36))
 
-        this.tab.rowGroup().children().eq(getRandomInt1).within(()=>{
+        this.tab.rowGroup().children().eq(Cypress.env("getRandomInt1")).within(()=>{
             this.tab.row().within(()=>{
                 this.tab.cell().eq(2).children().then((inside)=>{
                     const firstName = inside.text()
@@ -33,6 +33,13 @@ class employeeListPage{
                 const lastName = Cypress.env('lastName')
                 const expectedName = `${firstName} ${lastName}`
                 expect(actualName.text()).equal(expectedName)
+        })
+    }
+
+    getMofiedEmployee(){
+        this.tab.row().then(()=>{
+            this.tab.cell().contains(Cypress.env("randomFirstName"))
+            this.tab.cell().contains(Cypress.env("randomLastName"))
         })
     }
 }

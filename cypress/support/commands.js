@@ -7,7 +7,7 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-
+import 'cypress-image-compare/commands';
 import 'cypress-file-upload';
 import 'cypress-wait-until'
 require('@4tw/cypress-drag-drop')
@@ -46,7 +46,6 @@ Cypress.Commands.add("Login", () =>
         .should("have.value", "admin123") // Debería contener el el valor de la contraseña
 
         cy.get("[type='submit']").click() // Contiene Login, hacer click
-
     })
 })
 

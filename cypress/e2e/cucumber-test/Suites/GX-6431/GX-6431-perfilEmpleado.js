@@ -5,7 +5,7 @@ import {EmployeeListPage} from '../../../../support/pages/OrangeHRM/employeeList
 
 context('OrangeHRM | PIM | Editar perfil de empleado', () => {
 	Given('el administrador se encuentra en la pagina de login de Orange', () => {
-		cy.visit('web/index.php/auth/login')
+		cy.visit('/web/index.php/auth/login')
 		cy.url().should('contain', 'login')
 	})
 
@@ -14,12 +14,12 @@ context('OrangeHRM | PIM | Editar perfil de empleado', () => {
 	})
 
 	And('el administrador debe posicionarse en la pestaña PIM y Employee List', () => {
-		cy.visit('web/index.php/pim/viewEmployeeList')
+		cy.visit('/web/index.php/pim/viewEmployeeList')
 	})
 
 	describe('TC1: Admin edita información personal del empleado', () => {
 		When('el admin inserta nuevos valores en los campos del form', () => {
-			cy.visit('web/index.php/pim/viewEmployeeList')
+			cy.visit('/web/index.php/pim/viewEmployeeList')
 			Cypress.env('randomFirstName', faker.name.firstName())
 			Cypress.env('randomLastName', faker.name.lastName())
 			EmployeeListPage.getRandomEmployee()
@@ -61,7 +61,7 @@ context('OrangeHRM | PIM | Editar perfil de empleado', () => {
 			cy.url().should('contain', 'viewPersonalDetails')
 		})
 		And('la información del empleado es actualizada en la Tabla del {string}', (eList) => {
-			cy.visit('web/index.php/pim/viewEmployeeList')
+			cy.visit('/web/index.php/pim/viewEmployeeList')
 			cy.url().should('contain', 'viewEmployeeList')
 			EmployeeListPage.getMofiedEmployee()
 		})

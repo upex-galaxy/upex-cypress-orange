@@ -53,7 +53,7 @@ jobs:
                 contents: |
                   {
                     "nonGlobalStepDefinitions": true,
-                    "stepDefinitions": "cypress/e2e/cucumber-test/stepDefinitions/*.{js,ts}",
+                    "stepDefinitions": "cypress/e2e/cucumber-test/**/*.{js,ts}",
                     "json": {
                       "enabled": true,
                       "formatter": "./cucumber-formatter/cucumber-json-formatter",

@@ -22,4 +22,4 @@ class ForgetPasswordPage {
 }
 
 
-export const ForgetPasswordPage = new ForgetPasswordPage;
+export const ForgetPassword = new ForgetPasswordPage;

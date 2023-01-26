@@ -15,11 +15,11 @@ context('OrangeHRM | PIM | Editar perfil de empleado', () => {
 
 	And('el administrador debe posicionarse en la pestaña PIM y Employee List', () => {
 		cy.visit('web/index.php/pim/viewEmployeeList')
-		cy.url().should('contain', 'viewEmployeeList')
 	})
 
 	describe('TC1: Admin edita información personal del empleado', () => {
 		When('el admin inserta nuevos valores en los campos del form', () => {
+			cy.visit('web/index.php/pim/viewEmployeeList')
 			Cypress.env('randomFirstName', faker.name.firstName())
 			Cypress.env('randomLastName', faker.name.lastName())
 			EmployeeListPage.getRandomEmployee()

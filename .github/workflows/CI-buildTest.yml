@@ -38,7 +38,7 @@ jobs:
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                    npm run file */**/GX2-508/*.feature
+                    npm run file */**/GX-6431/*.feature
                   record: true
               env:
                   # pass the Dashboard record key as an environment variable
@@ -63,9 +63,9 @@ jobs:
               with: #EDITAR AQUÍ EL TEST EXECUTION DE JIRA DONDE SE CARGARÁN LOS TESTS:
                   username: ${{secrets.XRAY_CLIENT_ID}}
                   password: ${{secrets.XRAY_CLIENT_SECRET}}
-                  testFormat: 'junit'
-                  testPaths: 'reports/test-results.xml'
-                  testExecKey: 'GX-5'
+                  testFormat: 'cucumber'
+                  testPaths: 'reports/cucumber-report.json'
+                  testExecKey: 'GX-6433'
                   projectKey: 'GX'
 
             # - name: 🔔Slack Notification of Done

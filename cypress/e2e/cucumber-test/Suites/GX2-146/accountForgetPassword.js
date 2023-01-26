@@ -1,5 +1,5 @@
 import { Given, When, And, Then } from "@badeball/cypress-cucumber-preprocessor";
-import ForgetPasswordPage from "../../../../support/pages/OrangeHRM/ForgetPasswordPage";
+import {ForgetPasswordPage} from "../../../../support/pages/OrangeHRM/ForgetPasswordPage.js";
 
     //Precondicones
     Given("el usuario esta en el endpoint {string}", (endpoint) => {

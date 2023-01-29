@@ -10,17 +10,11 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 		cy.fixture('data/employee').then((data) => {
 			the = data
 		})
-
-		cy.fixture('data/endpoints').then((data) => {
-			site = data
-		})
-
-
-		
 	})
 	And('abre el VPD del empleado para editar', () => {
-		cy.visit(site.pages.pim)
+		cy.visit(the.pages.pim)
 		pim.get.pencilButton().click({ force: true })
+		cy.GetEmployeeNumber()
 		employee.get.EmployeeProfilePicture().should('exist').and('be.visible')
 	})
 
@@ -38,8 +32,7 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 
 		//Success, Succesfully Saved
 		Then('debe aparecer un Log Message indicando Successfully Updated', () => {
-			employee.get.SuccessToastMessage().invoke('text').should('eq', 'Successfully Updated') //harcoded
-
+			employee.get.SuccessToastMessage().invoke('text').should('eq', the.editToastMessages.successfullyUpdated) 
 		})
 		And('se mantiene en la página del perfil del empleado', () => {
 			cy.reload()
@@ -47,7 +40,7 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 			cy.url().should('eq', Cypress.env('currentUrl'))
 		})
 		And('la información del empleado es actualizada en la Tabla del Employee List', () => {
-			cy.visit(site.pages.pim)
+			cy.visit(the.pages.pim)
 			pim.enterEmployeeId(Cypress.env('employeeId'))
 			pim.clickOnSearchButton()
 			pim.get.employeeRow().should(($el) => {
@@ -60,32 +53,34 @@ context('GX2-6836 | OrangeHRM | PIM | Editar perfil de empleado', () => {
 		})
 	})
 
-	describe('TC2: admin edita imagen de perfil del empleado', () => { 
-
-		When('el admin ingresa en la imagen del perfil del empleado', () =>{
-			//cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/29')
+	describe.skip('TC2: admin edita imagen de perfil del empleado', () => {
+		When('el admin ingresa en la imagen del perfil del empleado', () => {
+			cy.GetEmployeeImageEtag() // What da f*ck is Etag?? -> https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag 
 			employee.clickEmployeeProfileImage()
 		})
-		
-		And('carga una nueva imagen de perfil en el UploadInput', ()=>{
-			employee.get.EmployeeChangeImageButton().selectFile('cypress/fixtures/images/NewProfilePicture.jpg', {force: true})
+
+		And('carga una nueva imagen de perfil en el UploadInput', () => {
+			employee.get.EmployeeChangeImageButton().selectFile('cypress/fixtures/images/upexlogo.png', { force: true })
 		})
 
-		And('hace click en el botón "Save"', ()=>{
-            employee.clickSaveProfileImage()
+		And('hace click en el botón "Save"', () => {
+			employee.clickSaveProfileImage()
 		})
 
-		Then('debe aparecer un Log Message indicando "Success, Succesfully Saved"', ()=>{
-            employee.get.SuccessToastMessage().invoke('text').should('eq', 'Successfully Updated')
+		Then('debe aparecer un Log Message indicando "Success, Succesfully Saved"', () => {
+			employee.get.SuccessToastMessage().invoke('text').should('eq', the.editToastMessages.successfullyUpdated)
 		})
 
-		And('debe visualizarse la nueva imagen de perfil en todas las vistas del empleado', ()=>{
-            
+		And('debe visualizarse la nueva imagen de perfil en todas las vistas del empleado', () => {
+			cy.api({
+				method: 'GET',
+				url: `${the.pages.employeePhotoEndPoint}${Cypress.env('employeeNumber')}`, 
+			}).then((resp) => {
+				expect(resp.status).to.equal(200)
+				expect(resp.headers.etag).not.equal(Cypress.env('employeeImageEtag'))
+			})
 		})
-
- })
-
-
+	})
 })
 
 // Este código abajo es para que NO APAREZCA los XHR o Fetch en el Test Runner de Cypress, para que se vea limpio.

@@ -90,6 +90,8 @@ Cypress.Commands.add('GetEmployeeId', () => {
 			.invoke('prop', '_value')
 			.then((employeeIdValue) => {
 				Cypress.env('employeeId', employeeIdValue)
+
+				cy.log(` EL EMPLOYEEID ES ${Cypress.env('employeeId', employeeIdValue)}`)
 			})
 	})
 })
@@ -99,3 +101,34 @@ Cypress.Commands.add('GetCurrentUrl', () => {
 		Cypress.env('currentUrl', url)
 	})
 })
+
+Cypress.Commands.add('GetEmployeeNumber', () => {
+
+	cy.url().then((url) => {
+		//const currentURL = url;
+		cy.log(`URL IS; ${url}`)
+		currentURL = url.split('empNumber/')
+		const id = currentURL[1]
+		cy.log(`EMPLOYEE NUMBER IS; ${id}`)
+		Cypress.env('employeeNumber', id)
+
+	})
+
+})
+
+Cypress.Commands.add('GetEmployeeImageEtag', () =>{
+		
+	cy.api({
+		method: 'GET',
+		url: `https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhoto/empNumber/${Cypress.env('employeeNumber')}`,
+	}).then((resp) => {
+		expect(resp.status).to.equal(200)
+		Cypress.env('employeeImageEtag', resp.headers.etag)
+		cy.log(`EMPLOYEE NUMBER ${Cypress.env('employeeNumber')} HAS PROLIFE ETAG ------>  ${Cypress.env('employeeImageEtag')}`)
+	})
+
+})
+
+
+
+

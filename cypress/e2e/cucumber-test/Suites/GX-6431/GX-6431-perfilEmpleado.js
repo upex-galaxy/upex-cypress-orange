@@ -14,8 +14,8 @@ context('OrangeHRM | PIM | Editar perfil de empleado', () => {
 	})
 
 	And('el administrador debe posicionarse en la pestaña PIM y Employee List', () => {
-		// cy.visit('/web/index.php/pim/viewEmployeeList')
-		expect(1).to.equal(1)
+		cy.visit('/web/index.php/pim/viewEmployeeList')
+		// expect(1).to.equal(1)
 	})
 
 	describe('TC1: Admin edita información personal del empleado', () => {
@@ -63,7 +63,7 @@ context('OrangeHRM | PIM | Editar perfil de empleado', () => {
 		})
 		And('la información del empleado es actualizada en la Tabla del {string}', (eList) => {
 			cy.visit('/web/index.php/pim/viewEmployeeList')
-			// cy.url().should('contain', 'viewEmployeeList')
+			cy.url().should('contain', 'viewEmployeeList')
 			EmployeeListPage.getMofiedEmployee()
 		})
 	})

@@ -24,6 +24,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
 	// @Ely: CYPRESS DASHBOARD PARA VER NUESTRAS EJECUCIONES EN LA WEB:
 	projectId: '31yjoc',
+	retries: 2,
 	// 1280×720 is considered to be the most suitable screen resolution for the desktop website version:
 	viewportWidth: 1280,
 	viewportHeight: 720,

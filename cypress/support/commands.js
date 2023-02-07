@@ -11,10 +11,11 @@ import 'cypress-file-upload'
 import 'cypress-wait-until'
 import '@4tw/cypress-drag-drop'
 import 'cypress-downloadfile/lib/downloadFileCommand'
-import {login} from '@pages/Login.Page'
-const {authLogin, dashboardIndex} = Cypress.env('endpoint')
-import {signin} from '@pages/SignIn.Page.js'
+import { login } from '@pages/Login.Page'
+import { employee } from '@pages/Employee.Page'
 
+const { authLogin, dashboardIndex } = Cypress.env('endpoint')
+import { signin } from '@pages/SignIn.Page.js'
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
@@ -31,28 +32,103 @@ import {signin} from '@pages/SignIn.Page.js'
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('Login',(username,password)=>{
-    cy.session('login',()=>{
-        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php")
-        cy.url().should("contain", authLogin)
-        username && login.enterUsername(username)
-        password && login.enterPassword(password)
-        login.submitLogin()
+Cypress.Commands.add('Login', (username, password) => {
+	cy.session('login', () => {
+		cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php')
+		cy.url().should('contain', authLogin)
+		username && login.enterUsername(username)
+		password && login.enterPassword(password)
+		login.submitLogin()
 
-        cy.url().should("contain", dashboardIndex)
-        
-    })
+		cy.url().should('contain', dashboardIndex)
+	})
+})
+
+Cypress.Commands.add('SignIn', () => {
+	const { username, password } = Cypress.env('user')
+	const { signUp } = Cypress.env('endpoint')
+	cy.session('signIn', () => {
+		cy.visit(signUp)
+		signin.goToLoginTab()
+		signin.enterUsername(username)
+		signin.enterPassword(password)
+		signin.submitLogin()
+	})
+})
+
+Cypress.Commands.add('UpdateEmployeeFirstName', (the) => {
+	employee.get
+		.EmployeeFirstNameInput()
+		.clear()
+		.type(the.employeeNewData.firstName)
+		.invoke('prop', '_value')
+		.should('eq', the.employeeNewData.firstName)
+})
+
+Cypress.Commands.add('UpdateEmployeeMiddleName', (the) => {
+	employee.get
+		.EmployeeMiddleNameInput()
+		.clear()
+		.type(the.employeeNewData.middleName)
+		.invoke('prop', '_value')
+		.should('eq', the.employeeNewData.middleName)
+})
+
+Cypress.Commands.add('UpdateEmployeeLastName', (the) => {
+	employee.get
+		.EmployeeLastNameInput()
+		.clear()
+		.type(the.employeeNewData.lastName)
+		.invoke('prop', '_value')
+		.should('eq', the.employeeNewData.lastName)
+})
+
+Cypress.Commands.add('GetEmployeeId', () => {
+	cy.then(() => {
+		employee.get
+			.EmployeeId()
+			.invoke('prop', '_value')
+			.then((employeeIdValue) => {
+				Cypress.env('employeeId', employeeIdValue)
+
+				cy.log(` EL EMPLOYEEID ES ${Cypress.env('employeeId', employeeIdValue)}`)
+			})
+	})
+})
+
+Cypress.Commands.add('GetCurrentUrl', () => {
+	cy.url().then((url) => {
+		Cypress.env('currentUrl', url)
+	})
+})
+
+Cypress.Commands.add('GetEmployeeNumber', () => {
+
+	cy.url().then((url) => {
+		//const currentURL = url;
+		cy.log(`URL IS; ${url}`)
+		currentURL = url.split('empNumber/')
+		const id = currentURL[1]
+		cy.log(`EMPLOYEE NUMBER IS; ${id}`)
+		Cypress.env('employeeNumber', id)
+
+	})
+
+})
+
+Cypress.Commands.add('GetEmployeeImageEtag', () =>{
+		
+	cy.api({
+		method: 'GET',
+		url: `https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhoto/empNumber/${Cypress.env('employeeNumber')}`,
+	}).then((resp) => {
+		expect(resp.status).to.equal(200)
+		Cypress.env('employeeImageEtag', resp.headers.etag)
+		cy.log(`EMPLOYEE NUMBER ${Cypress.env('employeeNumber')} HAS PROLIFE ETAG ------>  ${Cypress.env('employeeImageEtag')}`)
+	})
+
 })
 
 
-Cypress.Commands.add('SignIn', ()=>{
-    const { username, password } = Cypress.env('user')
-    const { signUp } = Cypress.env('endpoint')
-    cy.session('signIn',()=>{
-        cy.visit(signUp)
-        signin.goToLoginTab()
-        signin.enterUsername(username)
-        signin.enterPassword(password)
-        signin.submitLogin()
-    })
-})
+
+

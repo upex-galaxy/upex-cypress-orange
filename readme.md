@@ -76,6 +76,7 @@ ___
 ___
 7. **AHORA CON CYPRESS DASHBOARD**, puedes ver todas las ejecuciones y resultados de prueba del proyecto!
 Visita: [CYPRESS DASHBOARD](https://dashboard.cypress.io/projects/2pw67q/analytics/runs-over-time)
+___
 # PLAN DE PRUEBA: ESTRATEGIA Y DISEÑO
 ### 🚩LEVEL ONE (L1):
 1. Perfecta Nomenclatura del nombre de Archivo de prueba: {GX-ID}-{StoryShortName}.{extensionFile} ej: GX-50-AgregarItemsAlCart.cy.js

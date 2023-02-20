@@ -59,6 +59,8 @@ export default defineConfig({
 		endpoint:{
 			authLogin: "/auth/login",
 			dashboardIndex: "/dashboard/index",
+			addEmployeeInPim: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee",
+			viewEmployee: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
 			signUp: "https://coderbyte.com/sl" 
 		},
 		user: {

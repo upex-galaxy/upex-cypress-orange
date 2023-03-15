@@ -6,9 +6,9 @@ class LoginPage{
         passwordInput:()=> cy.get("[tabindex='2']"),
         loginButton:()=> cy.get("[tabindex='3']")
     }
-    // Para que el código sea legible, hay que separar cada acción en una única función.
-    // Como si fuera un Caso de Prueba estilo Step-by-Step como se muestra a continuación...
-    // Cada función de acción debe estar escrito con un verbo infinitivo + el objetivo del mismo:
+    //* Para que el código sea legible, hay que separar cada acción en una única función.
+    //* Como si fuera un Caso de Prueba estilo Step-by-Step como se muestra a continuación...
+    //todo: Cada función de acción debe estar escrito con un verbo infinitivo + el objetivo del mismo:
     enterUsername(username){ // Ingresar Nombre de Usuario X en el form
         username && this.get.usernameInput().type(username)
     }
@@ -20,4 +20,5 @@ class LoginPage{
     }
 };
 
+//todo: Exportar y crear la instancia al mismo tiempo:
 export const User = new LoginPage;

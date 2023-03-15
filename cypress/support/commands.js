@@ -10,12 +10,10 @@
 import 'cypress-file-upload'
 import 'cypress-wait-until'
 import '@4tw/cypress-drag-drop'
-import 'cypress-downloadfile/lib/downloadFileCommand'
 import { login } from '@pages/Login.Page'
 import { employee } from '@pages/Employee.Page'
 
 const { authLogin, dashboardIndex } = Cypress.env('endpoint')
-import { signin } from '@pages/SignIn.Page.js'
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
@@ -34,25 +32,13 @@ import { signin } from '@pages/SignIn.Page.js'
 
 Cypress.Commands.add('Login', (username, password) => {
 	cy.session('login', () => {
-		cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php')
+		cy.visit('/')
 		cy.url().should('contain', authLogin)
 		username && login.enterUsername(username)
 		password && login.enterPassword(password)
 		login.submitLogin()
 
 		cy.url().should('contain', dashboardIndex)
-	})
-})
-
-Cypress.Commands.add('SignIn', () => {
-	const { username, password } = Cypress.env('user')
-	const { signUp } = Cypress.env('endpoint')
-	cy.session('signIn', () => {
-		cy.visit(signUp)
-		signin.goToLoginTab()
-		signin.enterUsername(username)
-		signin.enterPassword(password)
-		signin.submitLogin()
 	})
 })
 

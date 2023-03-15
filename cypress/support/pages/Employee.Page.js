@@ -15,7 +15,7 @@ class Employee{
 
     }
 
-clickSavePersonalDetails(){
+    clickSavePersonalDetails(){
         this.get.PersonalDetailsSaveButton().click()
     }
 
@@ -28,7 +28,5 @@ clickSavePersonalDetails(){
     }
 
 }
-
-
 
 export const employee = new Employee; 

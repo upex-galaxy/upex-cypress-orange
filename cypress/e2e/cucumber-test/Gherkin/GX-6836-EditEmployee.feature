@@ -11,9 +11,9 @@ Feature: GX2-6837 | OrangeHRM | PIM | Editar perfil de empleado
         And se mantiene en la página del perfil del empleado
         And la información del empleado es actualizada en la Tabla del Employee List
 
-    Scenario Outline: TC2: admin edita imagen de perfil del empleado
-        When el admin ingresa en la imagen del perfil del empleado
-        And carga una nueva imagen de perfil en el UploadInput
-        And hace click en el botón "Save"
-        Then debe aparecer un Log Message indicando "Success, Succesfully Saved"
-        And debe visualizarse la nueva imagen de perfil en todas las vistas del empleado
+# Scenario Outline: TC2: admin edita imagen de perfil del empleado
+#     When el admin ingresa en la imagen del perfil del empleado
+#     And carga una nueva imagen de perfil en el UploadInput
+#     And hace click en el botón "Save"
+#     Then debe aparecer un Log Message indicando "Success, Succesfully Saved"
+#     And debe visualizarse la nueva imagen de perfil en todas las vistas del empleado

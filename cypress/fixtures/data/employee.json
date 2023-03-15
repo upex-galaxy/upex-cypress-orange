@@ -7,9 +7,9 @@
 		"body": "Fixtures are a great way to mock data for responses to routes"
 	},
 
-  "editToastMessages": {
-    "successfullyUpdated" : "Successfully Updated"
-  },
+	"editToastMessages": {
+		"successfullyUpdated": "Successfully Updated"
+	},
 
 	"pages": {
 		"pim": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",

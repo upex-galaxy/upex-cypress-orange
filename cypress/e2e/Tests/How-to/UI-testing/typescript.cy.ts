@@ -11,5 +11,7 @@ describe('test typescript page', () => {
 		homePage.get.suggestionListBox().should('be.visible');
 
 		homePage.selectSuggestion(2);
+
+		//Assertion
 	});
 });

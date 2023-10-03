@@ -14,7 +14,6 @@
 	"plugins": ["@typescript-eslint", "only-warn"],
 	"rules": {
 		"indent": ["warn", "tab", { "SwitchCase": 1 }],
-		"linebreak-style": "off",
 		"quotes": ["warn", "single"],
 		"semi": ["warn", "always"],
 		"object-curly-spacing": ["warn", "always"]

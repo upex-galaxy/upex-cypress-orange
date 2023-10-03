@@ -1,5 +1,5 @@
 {
-	"nonGlobalStepDefinitions": true,
+	"nonGlobalStepDefinitions": false,
 	"stepDefinitions": "cypress/e2e/cucumber-test/stepDefinitions/*.{js,ts}",
 	"json": {
 		"enabled": false,

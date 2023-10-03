@@ -5,15 +5,15 @@ import createEsbuildPlugin from '@badeball/cypress-cucumber-preprocessor/esbuild
 
 async function setupNodeEvents(on, config) {
 	// This is required for the preprocessor to be able to generate JSON reports after each run, and more,
-	await addCucumberPreprocessorPlugin(on, config)
+	await addCucumberPreprocessorPlugin(on, config);
 	on(
 		'file:preprocessor',
 		createBundler({
 			plugins: [createEsbuildPlugin(config)],
 		})
-	)
+	);
 	// Make sure to return the config object as it might have been modified by the plugin.
-	return config
+	return config;
 }
 
 export default defineConfig({
@@ -40,20 +40,19 @@ export default defineConfig({
 		// Glob pattern to determine what test files to load:
 		specPattern: ['cypress/e2e/cucumber-test/Gherkin/*.feature', 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'],
 		// Use Cypress plugins:
-    	setupNodeEvents,
-		baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php"
+		setupNodeEvents,
+		baseUrl: 'https://opensource-demo.orangehrmlive.com/web/index.php',
 	},
-	env:{
-		AdminUser:{
-
-			username: "Admin",
-			password: "admin123"
+	env: {
+		AdminUser: {
+			username: 'Admin',
+			password: 'admin123',
 		},
-		endpoint:{
-			authLogin: "/auth/login",
-			dashboardIndex: "/dashboard/index",
-			addEmployeeInPim: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee",
-			viewEmployee: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
-		}
-	}
-})
+		endpoint: {
+			authLogin: '/auth/login',
+			dashboardIndex: '/dashboard/index',
+			addEmployeeInPim: 'https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee',
+			viewEmployee: 'https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList',
+		},
+	},
+});

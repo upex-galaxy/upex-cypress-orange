@@ -15,6 +15,7 @@ class SLC {
 		postSuccess: () => cy.get('[id="oxd-toaster_1"] [class*="oxd-toast--success"]', { timeout: 2000 }),
 		showMoreText: () => cy.get('[class="orangehrm-buzz-comment"] p[class$="buzz-comment-readmore"]', { timeout: 2000 }),
 		containerBoxInput: () => cy.get('[class="orangehrm-buzz-comment"] [class$="orangehrm-post-comment-text"]'),
+		lateralMenu: () => cy.get('[class="oxd-text oxd-text--span oxd-main-menu-item--name"]'),
 	};
 	fillLoginAndSubmit(userName, password) {
 		this.get.userNameInput().type(userName);

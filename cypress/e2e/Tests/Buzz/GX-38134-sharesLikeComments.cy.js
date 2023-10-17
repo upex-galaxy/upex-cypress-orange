@@ -16,7 +16,7 @@ describe('This is your test project title', () => {
 		buzzMenu.clickSharedButton('post');
 		buzzMenu.get.postSuccess().should('have.length', 1).and('be.visible');
 		buzzMenu.clickSharedButton('cancel');
-		cy.get('[class="oxd-text oxd-text--span oxd-main-menu-item--name"]').last().should('be.visible');
+		buzzMenu.get.lateralMenu().last().should('be.visible');
 	});
 	it('38135 | TC2: Validar la funcionalidad del botón Like', () => {
 		buzzMenu.clickLikeButton();

@@ -8,7 +8,6 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 import 'cypress-file-upload';
-import 'cypress-wait-until';
 import '@4tw/cypress-drag-drop';
 import { login } from '@pages/Login.Page';
 import { employee } from '@pages/Employee.Page';

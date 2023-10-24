@@ -5,16 +5,7 @@
 		"outDir": "./dist",
 		"moduleResolution": "node",
 		"esModuleInterop": true,
-		"types": [
-			"cypress",
-			"cypress-file-upload",
-			"cypress-xpath",
-			"cypress-downloadfile",
-			"cypress-plugin-api",
-			"cypress-wait-until",
-			"@4tw/cypress-drag-drop",
-			"node"
-		],
+		"types": ["cypress", "cypress-file-upload", "cypress-xpath", "cypress-downloadfile", "cypress-plugin-api", "@4tw/cypress-drag-drop", "node"],
 		"baseUrl": ".",
 		"paths": {
 			"@pages/*": ["./cypress/support/pages/*"],

@@ -16,11 +16,27 @@ class BuzzPage {
 	get = {
 		sharePhotoButton: () => cy.get('[class = oxd-glass-button]').eq(0),
 		postPopUp: () => cy.get('[role=document]'),
-		addPhotos: () => cy.get('input[type=file]'),
-		addPhotos2: () => cy.get('[class=orangehrm-photo-input-field]'),
-		sharephotobutton: () => cy.get('[class^=oxd-file-div]'),
-		shareButton: () => cy.get('button[type=submit]'),
+		photosAddInput: () => cy.get('input[type=file]'),
+		popUpShareButton: () => cy.get('button[type=submit]').eq(1),
+		postSucces: () => cy.get('div[class^=oxd-toast-content]'),
+		imageContainer: () => cy.get('[class^=orangehrm-buzz-photos]').first(),
+		alertContent: () => cy.get('[class^=oxd-alert-content]'),
 	};
+	addImages({ path, numberOfPhotos }) {
+		cy.wait(4000);
+		this.get.sharePhotoButton().click();
+		this.get
+			.postPopUp()
+			.should('exist')
+			.within(() => {
+				for (let i = 0; i < numberOfPhotos; i++) {
+					this.get.photosAddInput().selectFile(path, { force: true });
+				}
+			});
+	}
+	clickOnShareButton() {
+		this.get.popUpShareButton().click();
+	}
 }
 
 export const buzzPage = new BuzzPage();

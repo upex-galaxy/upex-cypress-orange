@@ -1,6 +1,7 @@
 import { buzzPage } from '@pages/Buzz/GX-41966-postAPicture';
 import { loginPage } from '@pages/Buzz/GX-41966-postAPicture';
 import data from '../../../fixtures/data/GX-41966-postAPicture.json';
+const login = Cypress.env('AdminUser');
 
 describe('GX-41966-orange-hrm-buzz-post-a-picture)ge-hrm-buzz-post-a-picture', () => {
 	beforeEach(() => {

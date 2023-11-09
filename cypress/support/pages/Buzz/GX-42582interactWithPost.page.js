@@ -25,7 +25,8 @@ class BuzzPage {
 		textLikes: () => cy.get('[class^=oxd-text]').first(),
 		commentShareInput: () => cy.get('[class = oxd-buzz-post-input]').eq(1),
 		commentAPostInput: () => cy.get('[class=oxd-form] input'),
-		commentsContainer: () => cy.get('[class=orangehrm-buzz-comment] [class$=orangehrm-post-comment-text]'),
+		commentsContainer: () => cy.get('[class=orangehrm-buzz-comment]'),
+		comments: () => cy.get('[class=orangehrm-buzz-comment] [class$=orangehrm-post-comment-text]').last(),
 		showMoreButton: () => cy.get('[class$=orangehrm-buzz-comment-readmore]'),
 	};
 
@@ -58,6 +59,7 @@ class BuzzPage {
 		this.get.postContainer().within(() => {
 			this.get.commentButton().click({ force: true });
 			this.get.commentAPostInput().clear().should('be.empty').type(`${comment}{enter}`);
+			cy.wait(3000);
 		});
 	}
 }

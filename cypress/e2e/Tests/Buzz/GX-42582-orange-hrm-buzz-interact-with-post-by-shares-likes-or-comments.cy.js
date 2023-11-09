@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 import { buzzPage, loginPage } from '@pages/Buzz/GX-42582interactWithPost.page';
 const login = Cypress.env('AdminUser');
 const randomComment = faker.lorem.sentences(2);
+const showMoreButtonCss = '[class$=orangehrm-buzz-comment-readmore]';
 
 describe('GX-42582-orange-hrm-buzz-interact-with-post-by-shares-likes-or-comments', () => {
 	beforeEach(() => {
@@ -37,11 +38,15 @@ describe('GX-42582-orange-hrm-buzz-interact-with-post-by-shares-likes-or-comment
 		});
 		buzzPage.get.likeButton().first().should('have.class', 'orangehrm-like-animation');
 	});
-	it.only('42583 | TC3: Validar hacer un comentario en un post de la feed.', () => {
+	it('42583 | TC3: Validar hacer un comentario en un post de la feed.', () => {
 		buzzPage.comentAPost({ comment: randomComment });
-		buzzPage.get.commentsContainer().then(data => {
-			console.log(data);
-			console.log(data.length);
+		buzzPage.get.commentsContainer().then($commentContainer => {
+			if ($commentContainer.find(showMoreButtonCss).length !== 0) {
+				buzzPage.get.showMoreButton().click({ force: true });
+				buzzPage.get.comments().should('have.text', randomComment);
+			} else {
+				buzzPage.get.comments().should('have.text', randomComment);
+			}
 		});
 	});
 });

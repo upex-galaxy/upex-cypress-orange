@@ -1,6 +1,8 @@
 import { buzzPage } from '@pages/Buzz/GX-41966-postAPicture';
 import { loginPage } from '@pages/Buzz/GX-41966-postAPicture';
 import data from '../../../fixtures/data/GX-41966-postAPicture.json';
+import { removeLogs } from '@helper/RemoveLogs';
+
 const login = Cypress.env('AdminUser');
 
 describe('GX-41966-orange-hrm-buzz-post-a-picture)ge-hrm-buzz-post-a-picture', () => {
@@ -26,7 +28,7 @@ describe('GX-41966-orange-hrm-buzz-post-a-picture)ge-hrm-buzz-post-a-picture', (
 		//pop up image length
 		buzzPage.get.imageContainer().find('img').should('have.length', numberOfImages);
 		buzzPage.clickOnShareButton();
-		buzzPage.get.postSucces().should('exist').and('have.text', data.messages.succes);
+		buzzPage.get.postSucces().should('be.visible').and('have.text', data.messages.succes);
 		//feed image length
 		buzzPage.get.imageContainer().should('contain.html', 'img');
 	});
@@ -41,7 +43,7 @@ describe('GX-41966-orange-hrm-buzz-post-a-picture)ge-hrm-buzz-post-a-picture', (
 		buzzPage.get.imageContainer().find('img').should('have.length', numberOfImages);
 		buzzPage.clickOnShareButton();
 		cy.wait(5000);
-		buzzPage.get.postSucces().should('exist').and('have.text', data.messages.succes);
+		buzzPage.get.postSucces().should('be.visible').and('have.text', data.messages.succes);
 		//feed image length
 		buzzPage.get.imageContainer().find('img').should('have.length', numberOfImages);
 	});
@@ -54,3 +56,5 @@ describe('GX-41966-orange-hrm-buzz-post-a-picture)ge-hrm-buzz-post-a-picture', (
 		buzzPage.get.alertContent().should('be.visible').and('have.text', data.messages.maximumAllowedSize);
 	});
 });
+
+removeLogs();

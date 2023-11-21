@@ -18,7 +18,7 @@ class BuzzPage {
 		postPopUp: () => cy.get('[role=document]'),
 		photosAddInput: () => cy.get('input[type=file]'),
 		popUpShareButton: () => cy.get('button[type=submit]').eq(1),
-		postSucces: () => cy.get('div[class^=oxd-toast-content]', { timeout: 15000 }),
+		postSucces: () => cy.get('[class*="oxd-toast--success"]', { timeout: 15000 }),
 		imageContainer: () => cy.get('[class^=orangehrm-buzz-photos]').first(),
 		alertContent: () => cy.get('[class^=oxd-alert-content]'),
 	};

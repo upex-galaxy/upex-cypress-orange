@@ -5,7 +5,7 @@
 	},
 
 	"messages": {
-		"succes": "SuccessSuccessfully Saved",
+		"succes": "SuccessSuccessfully Saved×",
 		"maximumAllowedSize": "Maximum allowed file size is 2MB"
 	}
 }

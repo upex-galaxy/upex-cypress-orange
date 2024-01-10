@@ -27,50 +27,72 @@ class RangePage {
 		listRole: () => cy.get('[role="option"]'),
 		status: () => cy.get('.oxd-select-wrapper').eq(1),
 		listStatus: () => cy.get('[role="option"]'),
+		inputUserName: () => cy.get('[class="oxd-input oxd-input--active"]').eq(1),
 		passwordForm: () => cy.get('[type="password"]').eq(0),
 		confirmPasswForm: () => cy.get('[type="password"]').eq(1),
+		empleeName: () => cy.get('[placeholder="Type for hints..."]'), //employee name
 		listEmployeeName: () => cy.get('[role="listbox"]'),
 		saveBtn: () => cy.get('[type="submit"]'),
 		menssageSucess: () => cy.get('[class*="oxd-text--toast-message"]'),
+		menssageError: () => cy.get('[class*="oxd-input-field-error-message"]'),
 	};
 
 	selectAdminBtn() {
-		this.get.adminBtn().click();
+		return this.get.adminBtn().click();
 	}
 
 	clickOnAddBtn() {
-		this.get.addBtn().click();
+		return this.get.addBtn().click();
 	}
 
 	selectUserRole() {
-		this.get.userRolePicker().click();
+		return this.get.userRolePicker().click();
 	}
 
 	selectAdminRole() {
-		this.get.listRole().eq(1).click();
+		return this.get.listRole().eq(1).click();
 	}
 
 	clickOnStatus() {
-		this.get.status().click();
+		return this.get.status().click();
 	}
 
 	selectStatusEnabled() {
-		this.get.listStatus().eq(1).click();
+		return this.get.listStatus().eq(1).click();
 	}
 
 	typePassword() {
-		this.get.passwordForm().type('Peter2023');
+		return this.get.passwordForm().type('Peter2023');
 	}
 	typeConfirmPasssword() {
-		this.get.confirmPasswForm().type('Peter2023');
+		return this.get.confirmPasswForm().type('Peter2023');
 	}
 
 	selectListNameEmployee() {
-		this.get.listEmployeeName().click();
+		return this.get.listEmployeeName().eq(0).click();
 	}
 
 	clickOnSaveBtn() {
-		this.get.saveBtn().click();
+		return this.get.saveBtn().click();
+	}
+
+	typeEmployeeName() {
+		return this.get.empleeName().type('a');
+	}
+
+	//invalid
+	typeEmployeeInvalid() {
+		return this.get.empleeName().type('-');
+	}
+
+	typeUserNameInvalid() {
+		return this.get.inputUserName().type(1234);
+	}
+	typePasswordInvalid() {
+		return this.get.passwordForm().type(123456);
+	}
+	typeConfirmPassInvalid() {
+		return this.get.confirmPasswForm().type(123456);
 	}
 }
 

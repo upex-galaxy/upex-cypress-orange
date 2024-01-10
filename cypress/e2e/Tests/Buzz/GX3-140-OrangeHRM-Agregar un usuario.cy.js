@@ -4,6 +4,8 @@ const { authLogin, dashboardIndex } = Cypress.env('endpoint');
 const { username, password } = Cypress.env('AdminUser');
 removeLogs();
 
+import { faker } from '@faker-js/faker';
+
 describe('GX3-140-OrangeHRM-Agregar un usuario', () => {
 	beforeEach('Login to rangeHRM', () => {
 		cy.visit('/');
@@ -13,18 +15,18 @@ describe('GX3-140-OrangeHRM-Agregar un usuario', () => {
 		login.clickOnSubmit();
 		cy.url().should('contain', dashboardIndex);
 	});
-
-	it.only('GX3-140| TC001 Agregar un usuario con exito', () => {
+	it('GX3-140| TC001 Add user successfully', () => {
+		const Username = faker.internet.userName();
 		rangePage.selectAdminBtn();
 		rangePage.get.adminBtn().should('contain', 'Admin');
 		rangePage.clickOnAddBtn();
-		rangePage.get.formAddUser().should('contain', 'Add User');
+		//rangePage.get.formAddUser().should('contain', 'Add User');
 		rangePage.selectUserRole();
 		rangePage.selectAdminRole();
-		cy.get('[placeholder="Type for hints..."]').type('Test 53 Boy');
+		rangePage.typeEmployeeName(); //employee name
 		cy.wait(4000);
 		rangePage.selectListNameEmployee();
-		cy.get('[class="oxd-input oxd-input--active"]').eq(1).type('Pepe2022-2');
+		rangePage.get.inputUserName().type(Username);
 		rangePage.clickOnStatus();
 		rangePage.selectStatusEnabled();
 		rangePage.typePassword();
@@ -32,9 +34,25 @@ describe('GX3-140-OrangeHRM-Agregar un usuario', () => {
 		rangePage.clickOnSaveBtn();
 		cy.wait(2000);
 		rangePage.get.menssageSucess().should('contain', 'Successfully Saved');
+		cy.contains(Username).should('contain', Username);
+		cy.wait(2000);
 	});
 
-	//it('', () => { })
+	it('GX3-140|TC002 Admin user cant register a user', () => {
+		rangePage.selectAdminBtn();
+		rangePage.get.adminBtn().should('contain', 'Admin');
+		rangePage.clickOnAddBtn();
 
-	//it(()=>{})
+		rangePage.typeEmployeeInvalid();
+		rangePage.typeUserNameInvalid();
+		rangePage.typePasswordInvalid();
+		rangePage.typeConfirmPassInvalid();
+		rangePage.clickOnSaveBtn();
+		cy.wait(5000);
+		rangePage.get.menssageError().eq(0).should('contain.html', 'Required');
+		rangePage.get.menssageError().eq(1).should('contain.html', 'Invalid');
+		rangePage.get.menssageError().eq(2).should('contain.html', 'Required');
+		rangePage.get.menssageError().eq(3).should('contain.html', 'Should be at least 5 characters');
+		rangePage.get.menssageError().eq(4).should('contain.html', 'Should have at least 7 characters');
+	});
 });

@@ -71,8 +71,8 @@ jobs:
                   password: ${{secrets.XRAY_CLIENT_SECRET}}
                   testFormat: 'junit'
                   testPaths: 'reports/regression-report.xml'
-                  testExecKey: 'GX2-1359' #todo: Trello Regression Test Plan TX
-                  projectKey: 'GX2' #todo: UPEX LEVEL 2
+                  testExecKey: 'GX3-1164' #todo: Trello Regression Test Plan TX
+                  projectKey: 'GX3' #todo: UPEX LEVEL 2
 
             - name: 🔔Slack Notification of Done
               if: always()

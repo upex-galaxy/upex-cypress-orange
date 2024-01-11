@@ -54,7 +54,7 @@ describe('GX3-140-OrangeHRM-Agregar un usuario', () => {
 		rangePage.typeConfirmPassInvalid(passwordInvalid);
 		rangePage.get.confirmPasswForm().should('have.value', passwordInvalid);
 		rangePage.clickOnSaveBtn();
-		cy.wait(5000);
+		cy.wait(2000);
 		rangePage.get.menssageError().eq(0).should('contain.text', 'Required');
 		rangePage.get.menssageError().eq(1).should('contain.text', 'Invalid');
 		rangePage.get.menssageError().eq(2).should('contain.text', 'Required');

@@ -70,13 +70,5 @@
 	"githubPullRequests.ignoredPullRequestBranches": [
 		"main"
 	],
-	"cSpell.words": [
-		"exito",
-		"fullname",
-		"listbox",
-		"menssage",
-		"orangehrm",
-		"Passsword",
-		"Passw"
-	]
+	
 }

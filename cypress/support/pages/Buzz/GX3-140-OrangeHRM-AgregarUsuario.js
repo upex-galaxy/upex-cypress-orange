@@ -61,11 +61,11 @@ class RangePage {
 		return this.get.listStatus().eq(1).click();
 	}
 
-	typePassword() {
-		return this.get.passwordForm().type('Peter2023');
+	typePassword(password) {
+		return this.get.passwordForm().type(password);
 	}
-	typeConfirmPasssword() {
-		return this.get.confirmPasswForm().type('Peter2023');
+	typeConfirmPasssword(password) {
+		return this.get.confirmPasswForm().type(password);
 	}
 
 	selectListNameEmployee() {
@@ -76,23 +76,27 @@ class RangePage {
 		return this.get.saveBtn().click();
 	}
 
-	typeEmployeeName() {
-		return this.get.empleeName().type('a');
+	typeEmployeeName(name) {
+		return this.get.empleeName().type(name);
+	}
+
+	typeUsername(name) {
+		return this.get.inputUserName().type(name);
 	}
 
 	//invalid
-	typeEmployeeInvalid() {
-		return this.get.empleeName().type('-');
+	typeEmployeeInvalid(name) {
+		return this.get.empleeName().type(name);
 	}
 
-	typeUserNameInvalid() {
-		return this.get.inputUserName().type(1234);
+	typeUserNameInvalid(name) {
+		return this.get.inputUserName().type(name);
 	}
-	typePasswordInvalid() {
-		return this.get.passwordForm().type(123456);
+	typePasswordInvalid(password) {
+		return this.get.passwordForm().type(password);
 	}
-	typeConfirmPassInvalid() {
-		return this.get.confirmPasswForm().type(123456);
+	typeConfirmPassInvalid(password) {
+		return this.get.confirmPasswForm().type(password);
 	}
 }
 

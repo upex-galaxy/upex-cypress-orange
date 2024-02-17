@@ -1,8 +1,11 @@
 import { removeLogs } from '@helper/RemoveLogs';
+import { orangeLoginPage } from '@pages/orangeHRMLoginPage';
 
 describe('GX3-2356| OrangeHRM | Buzz | Interact with post by Shares, Likes or Comments', () => {
+	const { username: usedUsername, password: usedPassword } = Cypress.env('AdminUser');
+
 	beforeEach('Preconditions', () => {
-		cy.visit('/');
+		orangeLoginPage.loginSuccess(usedUsername, usedPassword);
 		cy.url().should('contain', 'index');
 	});
 

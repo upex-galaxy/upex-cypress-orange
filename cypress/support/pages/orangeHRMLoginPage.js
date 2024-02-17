@@ -1,32 +1,31 @@
-// class OrangeHRMLoginPage {
-// 	get = {
-// 		usernameInput: () => cy.get('[name="username"]'),
-// 		passwordInput: () => cy.get('[name="password"]'),
-// 		loginButton: () => cy.get('[type="submit"]'),
-//     };
+class OrangeHRMLoginPage {
+	get = {
+		usernameInput: () => cy.get('[name="username"]'),
+		passwordInput: () => cy.get('[name="password"]'),
+		loginButton: () => cy.get('[type="submit"]'),
+	};
 
-//     enterUsername(username) {
-// 		this.usernameInput().type(username);
-// 	}
+	enterUsername(username) {
+		this.get.usernameInput().type(username);
+	}
 
-// 	enterPassword(password) {
-// 		this.passwordInput().type(password);
-// 	}
+	enterPassword(password) {
+		this.get.passwordInput().type(password);
+	}
 
-// 	submitLogin() {
-// 		this.loginButton().click();
-// 	}
+	submitLogin() {
+		this.get.loginButton().click();
+	}
 
-// 	loginAndSubmit(username, password) {
-// 		this.enterUsername(username);
-// 		this.enterPassword(password);
-// 		this.submitLogin();
-// 	}
+	loginAndSubmit(username, password) {
+		this.enterUsername(username);
+		this.enterPassword(password);
+		this.submitLogin();
+	}
 
-// 	loginSuccess(){
-//         cy.visit('/');
-// 		this.loginAndSubmit(usedUsername, usedPassword);
-// 	}
-
-//     export const orangeLoginPage = new OrangeHRMLoginPage();
-// }
+	loginSuccess(usedUsername, usedPassword) {
+		cy.visit('/');
+		this.loginAndSubmit(usedUsername, usedPassword);
+	}
+}
+export const orangeLoginPage = new OrangeHRMLoginPage();

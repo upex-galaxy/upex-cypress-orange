@@ -13,9 +13,9 @@ describe('GX3-2356| OrangeHRM | Buzz | Interact with post by Shares, Likes or Co
 	});
 
 	it('GX3-2361 | TC01: Should turn red the like button when clicking on it', () => {
-		// const givenPost = buzzPage.getAnyPost();
 		buzzPage.clickLikeButton();
 		buzzPage.get.likeButtons().should('have.class', 'orangehrm-like-animation');
+		buzzPage.get.isRedHeartVisible().should('be.visible');
 	});
 });
 

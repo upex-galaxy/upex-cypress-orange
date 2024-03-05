@@ -15,7 +15,7 @@ describe('GX3-2493 | [Automation] OrangeHRM | Buzz | Delete a post', () => {
 		cy.url().should('contain', 'viewBuzz');
 	});
 
-	it('GX3-2493 | TC1: Validate  admin tries to delete a post', () => {
+	it('GX3-2493 | TC1: Validate delete a post', () => {
 		post.selectRandomPostAndClickDeleteLink();
 
 		post.verifyPopUpIsShown();

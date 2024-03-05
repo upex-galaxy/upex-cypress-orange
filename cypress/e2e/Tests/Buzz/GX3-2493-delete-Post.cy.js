@@ -1,4 +1,4 @@
-import { login } from '@pages/Buzz/GX3-2493-Login.Page';
+import { login } from '@pages/Buzz/GX3-2493-login.Page';
 import { post } from '@pages/Buzz/GX3-2493-Post.Page';
 const { username, password } = Cypress.env('AdminUser');
 import { removeLogs } from '@helper/RemoveLogs';

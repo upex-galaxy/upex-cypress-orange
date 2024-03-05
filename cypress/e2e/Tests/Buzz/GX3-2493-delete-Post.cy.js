@@ -23,7 +23,7 @@ describe('GX3-2493 | [Automation] OrangeHRM | Buzz | Delete a post', () => {
 		post.verifyCancelButtonIsVisible();
 	});
 
-	it('GX3-2493 |TC2: Validate delete a post', () => {
+	it('GX3-2493 | TC2: Validate delete a post', () => {
 		post.selectRandomPostAndClickDeleteLink();
 
 		post.verifyPopUpIsShown();
@@ -32,7 +32,7 @@ describe('GX3-2493 | [Automation] OrangeHRM | Buzz | Delete a post', () => {
 		post.verifyPostNotVisible();
 	});
 
-	it('GX3-2493 |TC3: Validate cancel deleting a post', () => {
+	it('GX3-2493 | TC3: Validate cancel deleting a post', () => {
 		post.selectRandomPostAndClickDeleteLink();
 		post.clickCancelButton();
 		post.verifyPostIsVisible();

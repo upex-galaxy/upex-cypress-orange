@@ -22,7 +22,7 @@ class NewEmployee {
 	}
 
 	clickSaveButton() {
-		this.saveButton().click();
+		this.saveButton().click({ force: true });
 	}
 	verifySuccessMessageIsDisplayed(message) {
 		cy.on('window:alert', str => {

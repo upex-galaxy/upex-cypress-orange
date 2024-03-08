@@ -36,7 +36,7 @@ class NewEmployee {
 
 	searchEmployee(name) {
 		this.InputEmployeeName().first().type(name);
-		this.searchButton().click();
+		this.searchButton().click({ force: true });
 	}
 
 	clickSwitch() {

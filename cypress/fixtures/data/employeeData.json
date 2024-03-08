@@ -1,0 +1,28 @@
+{
+	"firstName": "Olivia",
+	"middleName": "Marina",
+	"lastName": "Gomez",
+
+	"employeeInfo": {
+		"firstName": "Selena",
+		"middleName": "Sofia",
+		"lastName": "Perez"
+	},
+	"employeeCredentials": {
+		"username": "pepe123",
+		"password": "P@ssw0rd!2024"
+	},
+	"invalidCredentials": {
+		"username": "###",
+		"password": "hi1",
+		"confirmPassword": "h1"
+	},
+
+	"endPoint": {
+		"orangehrmlive": "orangehrmlive",
+		"addEmployee": "/pim/addEmployee",
+		"viewPersonalDetails": "/viewPersonalDetails/",
+		"employeeList": "pim/viewEmployeeList",
+		"viewSystemUsers": "/admin/viewSystemUsers"
+	}
+}

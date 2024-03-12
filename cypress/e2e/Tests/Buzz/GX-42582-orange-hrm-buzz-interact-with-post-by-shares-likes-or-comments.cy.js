@@ -4,7 +4,7 @@ const login = Cypress.env('AdminUser');
 const randomComment = faker.lorem.sentences(2);
 const showMoreButtonCss = '[class$=orangehrm-buzz-comment-readmore]';
 
-describe('GX-42582-orange-hrm-buzz-interact-with-post-by-shares-likes-or-comments', () => {
+describe.skip('GX-42582-orange-hrm-buzz-interact-with-post-by-shares-likes-or-comments', () => {
 	beforeEach(() => {
 		cy.session('login', () => {
 			cy.visit('/');

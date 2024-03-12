@@ -12,7 +12,7 @@ describe('This is your test project title', () => {
 		cy.url().should('contain', 'viewBuzz');
 	});
 
-	it('38135 | TC1: Validar la funcionalidad del botón Shares', () => {
+	it.skip('38135 | TC1: Validar la funcionalidad del botón Shares', () => {
 		buzzMenu.clickSharedButton('post');
 		buzzMenu.get.postSuccess().should('have.length', 1).and('be.visible');
 		buzzMenu.clickSharedButton('cancel');

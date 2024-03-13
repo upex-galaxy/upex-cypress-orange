@@ -1,0 +1,9 @@
+{
+	"credentials": {
+		"username": "Admin",
+		"nonExistenUsername": "pepe"
+	},
+	"endpoints": {
+		"viewBuzzviewSystemUsers": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers"
+	}
+}

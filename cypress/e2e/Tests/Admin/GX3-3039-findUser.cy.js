@@ -13,7 +13,7 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 		cy.contains('User Management').should('be.visible');
 	});
 
-	it('GX3-3068 | TC01: Validar poder filtrar usuario exitosamente usando un User name', () => {
+	it('GX3-3068 | TC01: Should successfully filter users by an existing username', () => {
 		userManagementPage.fillusernameInput(username);
 		userManagementPage.clickSearchButton();
 		cy.contains('Record Found').should('be.visible');

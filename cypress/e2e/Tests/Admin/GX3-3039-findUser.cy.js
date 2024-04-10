@@ -14,9 +14,10 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	});
 
 	it('GX3-3068 | TC01: Validar poder filtrar usuario exitosamente usando un User name', () => {
-		userManagementPage.fillusernameInput('username');
+		userManagementPage.fillusernameInput(username);
 		userManagementPage.clickSearchButton();
-		expect(1).equal(1);
+		cy.contains('Record Found').should('be.visible');
+		//! Por qué a veces muestra solo el usuario Admin y otras veces muestra más de 1 resultado (de forma alternada)???
 	});
 });
 

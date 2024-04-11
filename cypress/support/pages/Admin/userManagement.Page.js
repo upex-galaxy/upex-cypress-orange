@@ -7,6 +7,7 @@ class UserManagementPage {
 		recordsFound: () => cy.get('.orangehrm-container'),
 		employeeNameInput: () => cy.get('[class$="autocomplete-text-input--active"]'),
 		autocompletedEmployeeNameList: () => cy.get('[class="oxd-autocomplete-option"] span'),
+		invalidEmployeeNameMessage: () => cy.get('[class*="error-message"]'),
 	};
 
 	fillusernameInput(username) {
@@ -54,9 +55,14 @@ class UserManagementPage {
 	// }
 	//------------------------------------------------------------------------------------
 
-	searchByEmployeName() {
-		this.get.employeeNameInput().click().type('Isa');
+	searchByEmployeName(employeeName) {
+		this.get.employeeNameInput().click().type(employeeName);
 		this.get.autocompletedEmployeeNameList().first().click();
+		this.clickSearchButton();
+	}
+
+	searchBynonExistentEmployeName(employeeName) {
+		this.get.employeeNameInput().click().type(employeeName);
 		this.clickSearchButton();
 	}
 }

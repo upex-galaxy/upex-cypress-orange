@@ -5,6 +5,8 @@ class UserManagementPage {
 		userRoleDrowpdown: () => cy.get('[class="oxd-select-text-input"]').first(),
 		userRoleAdminDrowpdown: () => cy.get('[class="oxd-select-option"]'),
 		recordsFound: () => cy.get('.orangehrm-container'),
+		employeeNameInput: () => cy.get('[class$="autocomplete-text-input--active"]'),
+		autocompletedEmployeeNameList: () => cy.get('[class="oxd-autocomplete-option"] span'),
 	};
 
 	fillusernameInput(username) {
@@ -24,6 +26,37 @@ class UserManagementPage {
 		this.get.userRoleDrowpdown().click();
 		const randomUserRole = Math.floor(Math.random() * 2) + 1;
 		this.get.userRoleAdminDrowpdown().eq(randomUserRole).click();
+		this.clickSearchButton();
+	}
+
+	//! No pude hacerse random porque el SUT está en constante uso, es muy inistable, se eliminan los usuarios.
+	// getRandomEmployeeName() {
+	// 	const validEmployeeNameList = [
+	// 		'Nem Fe Big',
+	// 		'Angelica Ellis Rice',
+	// 		'Hayden Terry',
+	// 		'Alyson Wyman',
+	// 		'Gary Von',
+	// 		'Jerrold Cruickshank',
+	// 		'Shu Bechtelar',
+	// 		'FName LName',
+	// 	];
+	// 	const employeeNameListLength = validEmployeeNameList.length;
+	// 	const selectedEmployeeNameIndex = Math.floor(Math.random() * employeeNameListLength);
+	// 	const employeeName = validEmployeeNameList[selectedEmployeeNameIndex];
+	// 	return employeeName;
+	// }
+
+	// clickAndWriteEmployeName() {
+	// 	this.get.employeeNameInput().click().type('Isa');
+	// 	const randomEmployeeName = this.getRandomEmployeeName();
+	// 	this.get.employeeNameInput().click().type(randomEmployeeName);
+	// }
+	//------------------------------------------------------------------------------------
+
+	searchByEmployeName() {
+		this.get.employeeNameInput().click().type('Isa');
+		this.get.autocompletedEmployeeNameList().first().click();
 		this.clickSearchButton();
 	}
 }

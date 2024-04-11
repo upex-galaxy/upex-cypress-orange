@@ -9,7 +9,12 @@ class UserManagementPage {
 	}
 
 	clickSearchButton() {
-		this.get.searchButton().click({ force: true });
+		this.get.searchButton().click();
+	}
+
+	searchUserSuccessfully(username) {
+		this.fillusernameInput(username);
+		this.clickSearchButton();
 	}
 }
 

@@ -29,10 +29,11 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 		cy.contains('Records Found').should('be.visible');
 	});
 
-	// it.only('GX3-3068 | TC03: VShould successfully filter users by “User role” options', () => {
-	// 	// userManagementPage.
-	// 	expect(1).equal(1);
-	// });
+	it.only('GX3-3068 | TC04: Should successfully filter users by “User role” options', () => {
+		userManagementPage.searchByRandomUserRole();
+		cy.contains('Records Found').should('be.visible');
+		userManagementPage.get.recordsFound().should('be.visible');
+	});
 
 	// it('', () => { });
 });

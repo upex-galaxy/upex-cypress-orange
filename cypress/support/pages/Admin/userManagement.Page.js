@@ -1,13 +1,20 @@
 class UserManagementPage {
+	constructor() {
+		this.adminUsername = ''; // Variable para almacenar el nombre de usuario
+	}
+
 	get = {
 		usernameInput: () => cy.get('.oxd-form .oxd-input'),
-		searchButton: () => cy.get('.oxd-form [type="submit"]'), // or ('[type="submit"]')
+		// searchButton: () => cy.get('.oxd-form [type="submit"]'), // or ('[type="submit"]')
+		searchButton: () => cy.get('.orangehrm-left-space'),
 		userRoleDrowpdown: () => cy.get('[class="oxd-select-text-input"]').first(),
 		userRoleAdminDrowpdown: () => cy.get('[class="oxd-select-option"]'),
 		recordsFound: () => cy.get('.orangehrm-container'),
 		employeeNameInput: () => cy.get('[class$="autocomplete-text-input--active"]'),
-		autocompletedEmployeeNameList: () => cy.get('[class="oxd-autocomplete-option"] span'),
+		autocompletedEmployeeNameList: () => cy.get('.oxd-autocomplete-dropdown'),
 		invalidEmployeeNameMessage: () => cy.get('[class*="error-message"]'),
+
+		adminUserPresentName: () => cy.get('[class="oxd-table-cell oxd-padding-cell"]'),
 	};
 
 	fillusernameInput(username) {
@@ -15,7 +22,7 @@ class UserManagementPage {
 	}
 
 	clickSearchButton() {
-		this.get.searchButton().click();
+		this.get.searchButton().click({ force: true });
 	}
 
 	searchUserSuccessfully(username) {
@@ -30,35 +37,27 @@ class UserManagementPage {
 		this.clickSearchButton();
 	}
 
-	//! No pude hacerse random porque el SUT está en constante uso, es muy inistable, se eliminan los usuarios.
-	// getRandomEmployeeName() {
-	// 	const validEmployeeNameList = [
-	// 		'Nem Fe Big',
-	// 		'Angelica Ellis Rice',
-	// 		'Hayden Terry',
-	// 		'Alyson Wyman',
-	// 		'Gary Von',
-	// 		'Jerrold Cruickshank',
-	// 		'Shu Bechtelar',
-	// 		'FName LName',
-	// 	];
-	// 	const employeeNameListLength = validEmployeeNameList.length;
-	// 	const selectedEmployeeNameIndex = Math.floor(Math.random() * employeeNameListLength);
-	// 	const employeeName = validEmployeeNameList[selectedEmployeeNameIndex];
-	// 	return employeeName;
-	// }
+	getNameOfExistentUser() {
+		return this.get
+			.adminUserPresentName()
+			.eq(3)
+			.children()
+			.invoke('text')
+			.then(text => {
+				this.adminUsername = text; // Almacenar el nombre de usuario en la variable
+				cy.log('***** El username es: ' + this.adminUsername);
+			});
+	}
 
-	// clickAndWriteEmployeName() {
-	// 	this.get.employeeNameInput().click().type('Isa');
-	// 	const randomEmployeeName = this.getRandomEmployeeName();
-	// 	this.get.employeeNameInput().click().type(randomEmployeeName);
-	// }
-	//------------------------------------------------------------------------------------
+	searchByEmployeName() {
+		this.searchByRandomUserRole();
 
-	searchByEmployeName(employeeName) {
-		this.get.employeeNameInput().click().type(employeeName);
-		this.get.autocompletedEmployeeNameList().first().click();
-		this.clickSearchButton();
+		return this.getNameOfExistentUser().then(() => {
+			const usernameToSearch = this.adminUsername;
+			this.get.employeeNameInput().click().type(usernameToSearch);
+			this.get.autocompletedEmployeeNameList().first().wait(2000).click();
+			this.clickSearchButton();
+		});
 	}
 
 	searchBynonExistentEmployeName(employeeName) {

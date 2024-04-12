@@ -35,18 +35,27 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 		userManagementPage.get.recordsFound().should('be.visible');
 	});
 
-	//! crear usuario + buscarlo + eliminarlo----siempre el mismo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	it.skip('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
-		userManagementPage.searchByEmployeName(data.employeeName);
-		// cy.contains(data.recordFound).should('be.visible');
-		userManagementPage.get.recordsFound().should('be.visible');
-		// userManagementPage.get.recordsFound().should('contain', data.employeeName);
+	//TODO: Me dio trabajo!!!!!!!!!!!!!
+	//TODO: Steps
+	//TODO: (1) Search an existing employee by role, (2) save the employee's name, (3) search the employee by that name
+	it('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
+		userManagementPage.searchByEmployeName();
+		cy.contains(data.recordFound).should('be.visible');
+		userManagementPage.get
+			.recordsFound()
+			.should('be.visible')
+			.then($element => {
+				const recordsText = $element.text();
+				expect(recordsText).to.contain(userManagementPage.adminUsername);
+			});
 	});
 
 	it('GX3-3068 | TC06: Should not filter users with a non-existent "Employee Name"', () => {
 		userManagementPage.searchBynonExistentEmployeName(data.nonExistentUsername);
 		userManagementPage.get.invalidEmployeeNameMessage().should('be.visible');
 	});
+
+	it('GX3-3068 | TC07:  Should successfully filter users by "Status"', () => {});
 
 	// it('GX3-3068 | TC07: ', () => {});
 	// it('', () => { });
@@ -57,6 +66,4 @@ removeLogs();
 	GX3-3068 | TC07: Validar poder filtrar usuario(s) exitosamente usando “Status” seleccionando la opcion “Enabled”
 
 	GX3-3068 | TC08: Validar poder filtrar usuario(s) exitosamente usando “Status” seleccionando la opcion “Disabled”
-
-	GX3-3068 | TC09: Validar no poder filtrar usuario(s) con campos vacios 
 	*/

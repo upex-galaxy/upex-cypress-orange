@@ -35,13 +35,13 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 		userManagementPage.get.recordsFoundContainer().should('be.visible');
 	});
 
-	//TODO: Me dio trabajo!!!!!!!!!!!!!
+	//TODO: Me dio trabajo!!!!!!!!!!!!
 	//TODO: Steps
 	//TODO: (1) Search an existing employee by role, (2) save the employee's name, (3) search the employee by that name
 	it('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
 		userManagementPage.searchByEmployeName();
 		cy.contains(data.recordFound).should('be.visible');
-		cy.wait(5000);
+		cy.wait(8000);
 		userManagementPage.get
 			.recordsFoundContainer()
 			.should('be.visible')

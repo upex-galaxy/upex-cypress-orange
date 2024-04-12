@@ -9,7 +9,7 @@ class UserManagementPage {
 		searchButton: () => cy.get('.orangehrm-left-space'),
 		userRoleDrowpdown: () => cy.get('[class="oxd-select-text-input"]').first(),
 		userRoleAdminDrowpdown: () => cy.get('[class="oxd-select-option"]'),
-		recordsFound: () => cy.get('.orangehrm-container'),
+		recordsFoundContainer: () => cy.get('.orangehrm-container'),
 		employeeNameInput: () => cy.get('[class$="autocomplete-text-input--active"]'),
 		autocompletedEmployeeNameList: () => cy.get('.oxd-autocomplete-dropdown'),
 		invalidEmployeeNameMessage: () => cy.get('[class*="error-message"]'),

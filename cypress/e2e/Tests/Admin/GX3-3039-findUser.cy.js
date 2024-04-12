@@ -32,7 +32,7 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	it('GX3-3068 | TC04: Should successfully filter users by “User role” options', () => {
 		userManagementPage.searchByRandomUserRole();
 		cy.contains(data.recordsFound).should('be.visible');
-		userManagementPage.get.recordsFound().should('be.visible');
+		userManagementPage.get.recordsFoundContainer().should('be.visible');
 	});
 
 	//TODO: Me dio trabajo!!!!!!!!!!!!!
@@ -41,8 +41,9 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	it('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
 		userManagementPage.searchByEmployeName();
 		cy.contains(data.recordFound).should('be.visible');
+		cy.wait(8000);
 		userManagementPage.get
-			.recordsFound()
+			.recordsFoundContainer()
 			.should('be.visible')
 			.then($element => {
 				const recordsText = $element.text();

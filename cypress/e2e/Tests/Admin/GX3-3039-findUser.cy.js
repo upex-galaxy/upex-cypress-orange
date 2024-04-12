@@ -41,7 +41,7 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	it('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
 		userManagementPage.searchByEmployeName();
 		cy.contains(data.recordFound).should('be.visible');
-		cy.wait(8000);
+		cy.wait(5000);
 		userManagementPage.get
 			.recordsFoundContainer()
 			.should('be.visible')

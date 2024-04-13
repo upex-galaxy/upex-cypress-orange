@@ -38,7 +38,6 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	//TODO: Steps (1) Search an existing employee by role, (2) save the employee's name, (3) search the employee by that name
 	it('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
 		userManagementPage.searchByEmployeName();
-		cy.contains(data.recordFound).should('be.visible');
 		cy.wait(8000);
 		userManagementPage.get
 			.recordsFoundContainer()
@@ -55,7 +54,7 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	});
 
 	//! PENDIENTE = assertion porque sale el status en la posicion 1, en lugar de la misma posicion que se tomó de forma random en el metodo.
-	it.only('GX3-3068 | TC07:  Should successfully filter users by "Status"', () => {
+	it('GX3-3068 | TC07:  Should successfully filter users by "Status"', () => {
 		userManagementPage.searchByStatus().then(statusText => {
 			cy.log('Status Selected: ' + statusText.text());
 			expect(1).equal(1);

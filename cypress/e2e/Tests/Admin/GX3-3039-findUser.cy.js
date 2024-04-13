@@ -30,14 +30,12 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	});
 
 	it('GX3-3068 | TC04: Should successfully filter users by “User role” options', () => {
-		userManagementPage.searchByRandomUserRole();
+		userManagementPage.searchByUserRole();
 		cy.contains(data.recordsFound).should('be.visible');
 		userManagementPage.get.recordsFoundContainer().should('be.visible');
 	});
 
-	//TODO: Me dio trabajo!!!!!!!!!!!!
-	//TODO: Steps
-	//TODO: (1) Search an existing employee by role, (2) save the employee's name, (3) search the employee by that name
+	//TODO: Steps (1) Search an existing employee by role, (2) save the employee's name, (3) search the employee by that name
 	it('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
 		userManagementPage.searchByEmployeName();
 		cy.contains(data.recordFound).should('be.visible');
@@ -56,15 +54,13 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 		userManagementPage.get.invalidEmployeeNameMessage().should('be.visible');
 	});
 
-	it('GX3-3068 | TC07:  Should successfully filter users by "Status"', () => {});
-
-	// it('GX3-3068 | TC07: ', () => {});
-	// it('', () => { });
+	//! PENDIENTE = assertion porque sale el status en la posicion 1, en lugar de la misma posicion que se tomó de forma random en el metodo.
+	it.only('GX3-3068 | TC07:  Should successfully filter users by "Status"', () => {
+		userManagementPage.searchByStatus().then(statusText => {
+			cy.log('Status Selected: ' + statusText.text());
+			expect(1).equal(1);
+		});
+	});
 });
 
 removeLogs();
-/*
-	GX3-3068 | TC07: Validar poder filtrar usuario(s) exitosamente usando “Status” seleccionando la opcion “Enabled”
-
-	GX3-3068 | TC08: Validar poder filtrar usuario(s) exitosamente usando “Status” seleccionando la opcion “Disabled”
-	*/

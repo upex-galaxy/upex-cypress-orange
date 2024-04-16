@@ -9,7 +9,11 @@ class UserManagementPage {
 		userRoleDrowpdown: () => cy.get('[class="oxd-select-text-input"]').first(),
 		userRoleAdminDrowpdown: () => cy.get('[class="oxd-select-option"]'),
 		statusDrowpdown: () => cy.get('[class="oxd-select-text-input"]').last(),
+
 		statusOptionsList: () => cy.get('[class$="positon-bottom"] [class$="option"]'),
+		textStatusOptions: () => cy.get('[class="oxd-select-dropdown --positon-bottom"] span'),
+		searchResultTable: () => cy.get('[class="oxd-table-body"]'),
+
 		recordsFoundContainer: () => cy.get('.orangehrm-container'),
 		employeeNameInput: () => cy.get('[class$="autocomplete-text-input--active"]'),
 		autocompletedEmployeeNameList: () => cy.get('.oxd-autocomplete-dropdown'),
@@ -65,41 +69,29 @@ class UserManagementPage {
 		this.clickSearchButton();
 	}
 
-	// searchByStatus() {
-	// 	this.get.statusDrowpdown().click();
-	// 	const randomStatusIndex = Math.floor(Math.random() * 2) + 1;
-	// 	this.statusIndex = randomStatusIndex;
-	// 	return this.get
-	// 		.statusOptionsList()
-	// 		.eq(randomStatusIndex)
-	// 		.invoke('text')
-	// 		.then(statusText => {
-	// 			const status = statusText.text();
-	// 			cy.log('Status Selected: ' + status);
-	// 			this.get.statusOptionsList().eq(randomStatusIndex).click();
-	// 			cy.wait(2000);
-	// 			this.clickSearchButton();
-	// 			return status;
-	// 		});
-	// }
+	//=====================================================
+	selectRandomStatus() {
+		this.get.statusDrowpdown().click();
+		const randomStatusIndex = Math.floor(Math.random() * 2);
+		return randomStatusIndex;
+	}
 
 	searchByStatus() {
-		this.get.statusDrowpdown().click();
-		const randomStatusIndex = Math.floor(Math.random() * 2) + 1;
-		this.statusIndex = randomStatusIndex;
-		return cy
-			.get('.oxd-select-text-input')
-			.then(() => {
-				this.get.statusOptionsList().eq(randomStatusIndex).click();
-				cy.wait(2000);
-				this.clickSearchButton();
-				cy.wait(8000);
-				return this.get.statusOptionsList().eq(randomStatusIndex).invoke('text');
-			})
-			.then(statusText => {
-				cy.log('Status Selected: ' + statusText);
-				return statusText;
-			});
+		const index = this.selectRandomStatus();
+		return cy.get('.oxd-select-text-input').then(() => {
+			return this.get
+				.textStatusOptions()
+				.eq(index)
+				.invoke('text')
+				.then(selectedOptionText => {
+					cy.log('--->> Status Selected: ' + selectedOptionText);
+					this.get.textStatusOptions().eq(index).click();
+					cy.wait(2000);
+					this.clickSearchButton();
+					cy.wait(1000);
+					return cy.wrap(selectedOptionText);
+				});
+		});
 	}
 }
 export const userManagementPage = new UserManagementPage();

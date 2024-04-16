@@ -35,16 +35,22 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 		userManagementPage.get.recordsFoundContainer().should('be.visible');
 	});
 
-	//TODO: Steps (1) Search an existing employee by role, (2) save the employee's name, (3) search the employee by that name
+	//TODO: Steps (1) Search an existing employee by role, (2) save the employee's name, (3) search the employee by its name
 	it('GX3-3068 | TC05: Should successfully filter users by an existing "Employee Name"', () => {
 		userManagementPage.searchByEmployeName();
-		cy.wait(8000);
+		cy.wait(2000);
 		userManagementPage.get
 			.recordsFoundContainer()
 			.should('be.visible')
-			.then($element => {
-				const recordsText = $element.text();
-				expect(recordsText).to.contain(userManagementPage.adminUsername);
+			.then($table => {
+				const searchResult = userManagementPage.get.searchResultTable();
+				const recordsText = $table.text();
+				if (searchResult !== '') {
+					expect(recordsText).to.contain(userManagementPage.adminUsername);
+				} else {
+					cy.contains(data.noRecordsFound).should('be.visible');
+					cy.log('There are no users with the employe name: ' + recordsText);
+				}
 			});
 	});
 
@@ -53,11 +59,22 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 		userManagementPage.get.invalidEmployeeNameMessage().should('be.visible');
 	});
 
-	//! PENDIENTE = assertion porque sale el status en la posicion 1, en lugar de la misma posicion que se tomó de forma random en el metodo.
-	it.skip('GX3-3068 | TC07: Should successfully filter users by "Status"', () => {
-		userManagementPage.searchByStatus().then(statusText => {
-			cy.log('Status Selected: ' + statusText);
-			expect(1).equal(1);
+	it('GX3-3068 | TC07: Should successfully filter users by "Status"', () => {
+		userManagementPage.searchByStatus().then(statusSelected => {
+			userManagementPage.get
+				.searchResultTable()
+				.invoke('text')
+				.then(tableText => {
+					const statusToCheck = statusSelected === 'Enabled' ? 'Disabled' : 'Enabled'; // ? :
+
+					//trim() - método de JavaScript que elimina los espacios en blanco al principio y al final de una cadena de texto
+					if (tableText.trim() !== '') {
+						expect(tableText).not.to.contain(statusToCheck);
+					} else {
+						cy.contains(data.noRecordsFound).should('be.visible');
+						cy.log(`There are no users with status: ${statusSelected}`);
+					}
+				});
 		});
 	});
 });

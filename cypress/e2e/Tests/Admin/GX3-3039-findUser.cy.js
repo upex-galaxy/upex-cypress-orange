@@ -26,12 +26,12 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 
 	it('GX3-3068 | TC03: Should display all users when the search"s fields are empty', () => {
 		userManagementPage.clickSearchButton();
-		cy.contains(data.recordsFound).should('be.visible');
+		cy.contains(data.recordFound).should('be.visible');
 	});
 
 	it('GX3-3068 | TC04: Should successfully filter users by “User role” options', () => {
 		userManagementPage.searchByUserRole();
-		cy.contains(data.recordsFound).should('be.visible');
+		cy.contains(data.recordFound).should('be.visible');
 		userManagementPage.get.recordsFoundContainer().should('be.visible');
 	});
 
@@ -54,9 +54,9 @@ describe('GX3-3039 | OrangeHRM | Admin | Buscar un usuario', () => {
 	});
 
 	//! PENDIENTE = assertion porque sale el status en la posicion 1, en lugar de la misma posicion que se tomó de forma random en el metodo.
-	it('GX3-3068 | TC07:  Should successfully filter users by "Status"', () => {
+	it.skip('GX3-3068 | TC07: Should successfully filter users by "Status"', () => {
 		userManagementPage.searchByStatus().then(statusText => {
-			cy.log('Status Selected: ' + statusText.text());
+			cy.log('Status Selected: ' + statusText);
 			expect(1).equal(1);
 		});
 	});

@@ -65,19 +65,40 @@ class UserManagementPage {
 		this.clickSearchButton();
 	}
 
+	// searchByStatus() {
+	// 	this.get.statusDrowpdown().click();
+	// 	const randomStatusIndex = Math.floor(Math.random() * 2) + 1;
+	// 	this.statusIndex = randomStatusIndex;
+	// 	return this.get
+	// 		.statusOptionsList()
+	// 		.eq(randomStatusIndex)
+	// 		.invoke('text')
+	// 		.then(statusText => {
+	// 			const status = statusText.text();
+	// 			cy.log('Status Selected: ' + status);
+	// 			this.get.statusOptionsList().eq(randomStatusIndex).click();
+	// 			cy.wait(2000);
+	// 			this.clickSearchButton();
+	// 			return status;
+	// 		});
+	// }
+
 	searchByStatus() {
 		this.get.statusDrowpdown().click();
 		const randomStatusIndex = Math.floor(Math.random() * 2) + 1;
 		this.statusIndex = randomStatusIndex;
-		return this.get
-			.statusOptionsList()
-			.eq(randomStatusIndex)
-			.invoke('text')
-			.then(statusText => {
-				cy.log('Status Selected: ' + statusText);
+		return cy
+			.get('.oxd-select-text-input')
+			.then(() => {
 				this.get.statusOptionsList().eq(randomStatusIndex).click();
 				cy.wait(2000);
 				this.clickSearchButton();
+				cy.wait(8000);
+				return this.get.statusOptionsList().eq(randomStatusIndex).invoke('text');
+			})
+			.then(statusText => {
+				cy.log('Status Selected: ' + statusText);
+				return statusText;
 			});
 	}
 }

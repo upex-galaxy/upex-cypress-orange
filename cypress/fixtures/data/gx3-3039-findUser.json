@@ -1,8 +1,9 @@
 {
 	"userManagement": "User Management",
-	"nonExistentUsername": "nonExistentUsername",
+	"nonExistentEmployeeName": "Non Existent Employee Name",
 	"recordFound": "Found",
+	"recordsFound": "Records Found",
 	"noRecordsFound": "No Records Found",
 	"employeeName": "asdere",
-	"username": "igflores"
+	"nonExistentUsername": "igflores"
 }

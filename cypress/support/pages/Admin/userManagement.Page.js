@@ -7,13 +7,11 @@ class UserManagementPage {
 		usernameInput: () => cy.get('.oxd-form .oxd-input'),
 		searchButton: () => cy.get('.orangehrm-left-space'), //cy.get('.oxd-form [type="submit"]') or ('[type="submit"]')
 		userRoleDrowpdown: () => cy.get('[class="oxd-select-text-input"]').first(),
-		userRoleAdminDrowpdown: () => cy.get('[class="oxd-select-option"]'),
 		statusDrowpdown: () => cy.get('[class="oxd-select-text-input"]').last(),
-
-		statusOptionsList: () => cy.get('[class$="positon-bottom"] [class$="option"]'),
+		userRoleAdminDrowpdown: () => cy.get('[class="oxd-select-option"]'),
+		// statusOptionsList: () => cy.get('[class$="positon-bottom"] [class$="option"]'),
 		textStatusOptions: () => cy.get('[class="oxd-select-dropdown --positon-bottom"] span'),
 		searchResultTable: () => cy.get('[class="oxd-table-body"]'),
-
 		recordsFoundContainer: () => cy.get('.orangehrm-container'),
 		employeeNameInput: () => cy.get('[class$="autocomplete-text-input--active"]'),
 		autocompletedEmployeeNameList: () => cy.get('.oxd-autocomplete-dropdown'),
@@ -59,13 +57,14 @@ class UserManagementPage {
 		return this.getNameOfExistentUser().then(() => {
 			const usernameToSearch = this.adminUsername;
 			this.get.employeeNameInput().click().type(usernameToSearch);
-			this.get.autocompletedEmployeeNameList().first().wait(2000).click();
+			this.get.autocompletedEmployeeNameList().last().wait(2000).click();
 			this.clickSearchButton();
 		});
 	}
 
 	searchBynonExistentEmployeName(employeeName) {
 		this.get.employeeNameInput().click().type(employeeName);
+		cy.wait(1000);
 		this.clickSearchButton();
 	}
 
@@ -78,20 +77,18 @@ class UserManagementPage {
 
 	searchByStatus() {
 		const index = this.selectRandomStatus();
-		return cy.get('.oxd-select-text-input').then(() => {
-			return this.get
-				.textStatusOptions()
-				.eq(index)
-				.invoke('text')
-				.then(selectedOptionText => {
-					cy.log('--->> Status Selected: ' + selectedOptionText);
-					this.get.textStatusOptions().eq(index).click();
-					cy.wait(2000);
-					this.clickSearchButton();
-					cy.wait(1000);
-					return cy.wrap(selectedOptionText);
-				});
-		});
+		return this.get
+			.textStatusOptions()
+			.eq(index)
+			.invoke('text')
+			.then(selectedOptionText => {
+				cy.log('--->> Status Selected: ' + selectedOptionText);
+				this.get.textStatusOptions().eq(index).click();
+				cy.wait(2000);
+				this.clickSearchButton();
+				cy.wait(1000);
+				return cy.wrap(selectedOptionText);
+			});
 	}
 }
 export const userManagementPage = new UserManagementPage();

@@ -1,6 +1,6 @@
 class UserManagementPage {
 	constructor() {
-		this.adminUsername = ''; // Variable para almacenar el nombre de usuario
+		this.adminUsername = ''; // Variable para almacenar el nombre de usuario TC04
 	}
 
 	get = {
@@ -9,7 +9,6 @@ class UserManagementPage {
 		userRoleDrowpdown: () => cy.get('[class="oxd-select-text-input"]').first(),
 		statusDrowpdown: () => cy.get('[class="oxd-select-text-input"]').last(),
 		userRoleAdminDrowpdown: () => cy.get('[class="oxd-select-option"]'),
-		// statusOptionsList: () => cy.get('[class$="positon-bottom"] [class$="option"]'),
 		textStatusOptions: () => cy.get('[class="oxd-select-dropdown --positon-bottom"] span'),
 		searchResultTable: () => cy.get('[class="oxd-table-body"]'),
 		recordsFoundContainer: () => cy.get('.orangehrm-container'),
@@ -25,6 +24,7 @@ class UserManagementPage {
 
 	clickSearchButton() {
 		this.get.searchButton().click({ force: true });
+		cy.wait(1000);
 	}
 
 	searchUserSuccessfully(username) {
@@ -52,6 +52,7 @@ class UserManagementPage {
 	}
 
 	searchByEmployeName() {
+		//(1) Search an existing employee by role, (2) save the employee's name (adminUsername), (3) search the employee by its name
 		this.searchByUserRole();
 
 		return this.getNameOfExistentUser().then(() => {
@@ -68,7 +69,6 @@ class UserManagementPage {
 		this.clickSearchButton();
 	}
 
-	//=====================================================
 	selectRandomStatus() {
 		this.get.statusDrowpdown().click();
 		const randomStatusIndex = Math.floor(Math.random() * 2);
@@ -86,7 +86,6 @@ class UserManagementPage {
 				this.get.textStatusOptions().eq(index).click();
 				cy.wait(2000);
 				this.clickSearchButton();
-				cy.wait(1000);
 				return cy.wrap(selectedOptionText);
 			});
 	}

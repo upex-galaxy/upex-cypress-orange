@@ -58,4 +58,4 @@ class MenuOrangeHRM {
 		this.get.claimButton().click();
 	}
 }
-export const menu = new MenuOrangeHRM();
+export const menuOrange = new MenuOrangeHRM();

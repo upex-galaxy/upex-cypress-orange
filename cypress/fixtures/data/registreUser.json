@@ -1,0 +1,46 @@
+{
+	"FirstName": {
+		"data": {
+			"valid": "Hilary",
+			"invalid": "Carlos Eduardo Manuel Enrrique Gerardo"
+		}
+	},
+
+	"middleName": {
+		"data": {
+			"valid": "Erhard ",
+			"invalid": "Carlos Eduardo Manuel Enrrique Gerardo"
+		}
+	},
+
+	"LastName": {
+		"data": {
+			"valid": "Duff",
+			"invalid": "Francia Rodriguez Zuloaga Enrrique Girardo"
+		}
+	},
+
+	"EmplooyeeId": {
+		"data": {
+			"valid": "350350",
+			"invalid": "350350350350"
+		}
+	},
+
+	"UserName": {
+		"data": {
+			"valid": "HilaryDuff",
+			"invalid1": "Hila",
+			"invalid2": "HilaryDuffHilaryDuffHilaryDuffHilaryDuffH"
+		}
+	},
+
+	"Password": {
+		"data": {
+			"valid": "Hilary22",
+			"invalid1": "HILARY22",
+			"invalid2": "1234567890qwertyuiopñlkjhgfdsazxcvbnm/*-+.1234567890qwertyuiopñlkjhgfdsazxcvbnm/*-+.g",
+			"invalid3": "Hilary222"
+		}
+	}
+}

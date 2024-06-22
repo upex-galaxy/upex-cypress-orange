@@ -11,16 +11,29 @@ class PIMpage {
 		loginDetailsBtn: () => cy.get('input[type="checkbox"]'),
 		SaveBtn: () => cy.get('button[type="submit"]'),
 		MsgSuccesful: () => cy.get('[class*="enter-active"]'),
+		inputUsername: () => cy.get('input[class*="input--active"]').eq(4),
 		inputPassword: () => cy.get('input[type="password"]'),
+		inputConfirmPassword: () => cy.get('input[type="password"]').eq(1),
 	};
-	AddUser() {
-		this.get.AddEmployeeBtn().click();
-		cy.url().should('includes', '/addEmployee');
-		this.get.FirstNameBtn().type('test');
-		this.get.MiddleNameBtn().type('test');
-		this.get.LastNameBtn().type('test');
-		this.get.EmployeeIDbtn().type('456123');
-		this.get.SaveBtn().click();
+	typeFirstName(name) {
+		this.get.FirstNameBtn().type(name);
+	}
+	typeMiddleName(name) {
+		this.get.MiddleNameBtn().type(name);
+	}
+	typeLastName(name) {
+		this.get.LastNameBtn().type(name);
+	}
+	typeEmployeeID(data) {
+		this.get.EmployeeIDbtn().type(data);
+	}
+
+	typeUsername(username) {
+		this.get.inputUsername().type(username);
+	}
+
+	typePassword(password) {
+		this.get.inputPassword().type(password);
 	}
 }
 

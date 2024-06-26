@@ -15,17 +15,17 @@ class PIMpage {
 		inputPassword: () => cy.get('input[type="password"]'),
 		inputConfirmPassword: () => cy.get('input[type="password"]').eq(1),
 	};
-	typeFirstName(name) {
-		this.get.FirstNameBtn().type(name);
+	typeFirstName(firstName) {
+		this.get.FirstNameBtn().type(firstName);
 	}
-	typeMiddleName(name) {
-		this.get.MiddleNameBtn().type(name);
+	typeMiddleName(middleName) {
+		this.get.MiddleNameBtn().type(middleName);
 	}
-	typeLastName(name) {
-		this.get.LastNameBtn().type(name);
+	typeLastName(lastName) {
+		this.get.LastNameBtn().type(lastName);
 	}
-	typeEmployeeID(data) {
-		this.get.EmployeeIDbtn().type(data);
+	typeEmployeeID(ID) {
+		this.get.EmployeeIDbtn().type(ID);
 	}
 
 	typeUsername(username) {
@@ -34,6 +34,13 @@ class PIMpage {
 
 	typePassword(password) {
 		this.get.inputPassword().type(password);
+	}
+	submitBtn() {
+		this.get.SaveBtn().click();
+	}
+
+	MsgSuccesful() {
+		this.get.MsgSuccesful().should('be.visible');
 	}
 }
 

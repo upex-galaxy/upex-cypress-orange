@@ -1,15 +1,18 @@
-import { Login } from '@pages/Login.Page.js';
 import { PimPage } from '@pages/Buzz/PIM.page.js';
-import json from 'cypress/fixtures/data/registreUser.json';
+import { menuOrange } from '@pages/Menu.Page';
+import { json } from '@data/';
 describe('US GX3-3638 | TS: ✅OrangeHRM | PIM | Agregar un nuevo empleado con usuario', () => {
+	const { username, password } = Cypress.env('AdminUser');
+	const { dashboardIndex, viewEmployee } = Cypress.env('endpoint');
 	beforeEach('Login to OrangeHRM', () => {
-		cy.visit('/auth/login');
-		Login.enterUsername('Admin');
-		Login.enterPassword('admin123');
-		Login.submitLogin();
-		cy.url().should('include', 'dashboard');
+		cy.Login(username, password);
 	});
 	it('3638 | TC1: Validate to add new a employee profile to the HR without credentials successfully.', () => {
-		expect(1).to.equal(1);
+		cy.fixture('data/registreUser').then(data => {
+			cy.visit(dashboardIndex);
+			menuOrange.GoToPIM();
+			PimPage.AddEmployeeBtn();
+			PimPage.typeFirstName();
+		});
 	});
 });

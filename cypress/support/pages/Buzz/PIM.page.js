@@ -42,6 +42,9 @@ class PIMpage {
 	MsgSuccesful() {
 		this.get.MsgSuccesful().should('be.visible');
 	}
+	AddEmployeeBtn() {
+		this.get.AddEmployeeBtn().click();
+	}
 }
 
 export const PimPage = new PIMpage();

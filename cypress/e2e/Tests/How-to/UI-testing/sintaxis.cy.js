@@ -3,9 +3,6 @@ describe('US # : aquí se escribe el título de la User Story', () => {
 		cy.visit('https://example.cypress.io'); // Esto es un Comando de Acción directa
 	});
 	it('US # | TC#1: Aquí puedes escribir un Caso de Prueba', () => {
-		cy.fixture('data/registreUser.json').then(the => {
-			cy.get(the);
-		});
 		cy.get('[href="/commands/querying"]') // Sintaxis Comando Get de Selector de Atributos
 			.eq(2) // Esto es un método opcional
 			.click(); // Esto es un método de Interacción
